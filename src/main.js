@@ -6,7 +6,17 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+// import 'element-ui/lib/theme-chalk/index.css' 
+//自定义element-ui主题
+
+import './style/common.css'
+import './style/theme/index.css'
+import './style/index.less'
+import './style/nprogress.css'
+import './style/reset.css'
+
 Vue.use(ElementUI);
+
 
 Vue.config.productionTip = false
 

@@ -1,20 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <index></index>
     <router-view/>
   </div>
 </template>
 
 <script>
-import api from '@/api';
-console.log(api);
+import index from './pages/index';
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    index
+  }
 };
 </script>
-
-
-
 
 <style lang="less">
 #app {
