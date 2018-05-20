@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import api from '@/api';
+console.log(api);
 export default {
   name: 'App'
 };
@@ -14,7 +16,7 @@ export default {
 
 
 
-<style lang="less" scoped>
+<style lang="less">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
