@@ -1,20 +1,20 @@
-import axios from 'axios'
-import {Message, MessageBox} from 'element-ui';
+import axios from "axios";
+import {Message, MessageBox} from "element-ui";
 
-const fetch = axios.create({baseURL: '/mst/'})
+const fetch = axios.create({baseURL: "/mst/"});
 
 fetch
   .interceptors
   .request
   .use(config => {
-    if (localStorage.getItem('token')) {
-      config.headers.Authorization = `${localStorage.getItem('token')}`;
+    if (localStorage.getItem("token")) {
+      config.headers.Authorization = `${localStorage.getItem("token")}`;
     }
-    return config
+    return config;
   }, error => {
     console.log(error); // for debug
     return Promise.reject(error);
-  })
+  });
 
 fetch
   .interceptors
@@ -24,35 +24,35 @@ fetch
     if (res.resCode !== 200) {
       Message({
         message: res.resMsg,
-        type: 'error',
+        type: "error",
         duration: 5 * 1000
-      })
+      });
       if (res.resCode === 401) {
         // window.location.href =
         // 'http://irv.iresearch.com.cn/iResearchDataWeb/?m=user&a=jump&pro=46';
       } else {
         Message({
           message: res.resMsg,
-          type: 'error',
+          type: "error",
           duration: 5 * 1000
-        })
+        });
       }
-      console.log(res)
+      console.log(res);
       return Promise.reject(res);
     } else {
       return response.data;
     }
   }, error => {
-    console.log(error)
+    console.log(error);
     // router.replace('NotFound')
     switch (error.response.status) {
       case 500:
-        Message({message: '系统异常！', type: 'warning'});
+        Message({message: "系统异常！", type: "warning"});
         break;
       default:
         break;
     }
-    return Promise.reject(error)
-  })
+    return Promise.reject(error);
+  });
 
 export default fetch;

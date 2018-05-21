@@ -1,46 +1,46 @@
 <template>
-    <div class="index">
-        <div class="nav">
-            <div class="nav_head">
-                <h4>移动渠道市场监测</h4>
-                <p>StoreTracker</p>
-            </div>
-            <el-menu mode="vertical" :default-active="initPath" class="el-menu-vertical-demo" theme="dark" text-color="#8996a9" active-text-color="#fff" unique-opened>
-                <el-menu-item-group v-for="(group, groupIndex) in navs" :key="group.title">
-                    <template slot="title">
-                        <i class="iconfont" :class="group.class"></i>
-                        <span>{{ group.title }}</span>
-                    </template>
-                    <template v-for="(nav, navIndex) in group.children">
-                        <el-submenu v-if="nav.children" :index="`${groupIndex}-${navIndex}`" :key="navIndex">
-                            <template slot="title">{{ nav.title }}</template>
+  <div class="index">
+    <div class="nav">
+      <div class="nav_head">
+        <h4>移动渠道市场监测</h4>
+        <p>StoreTracker</p>
+      </div>
+      <el-menu mode="vertical" :default-active="initPath" class="el-menu-vertical-demo" theme="dark" text-color="#8996a9" active-text-color="#fff" unique-opened>
+        <el-menu-item-group v-for="(group, groupIndex) in navs" :key="group.title">
+          <template slot="title">
+            <i class="iconfont" :class="group.class"></i>
+            <span>{{ group.title }}</span>
+          </template>
+          <template v-for="(nav, navIndex) in group.children">
+            <el-submenu v-if="nav.children" :index="`${groupIndex}-${navIndex}`" :key="navIndex">
+              <template slot="title">{{ nav.title }}</template>
 
-                            <el-menu-item v-for="(sub, subIndex) in nav.children" :key="sub.link" :index="sub.link">
-                                <router-link tag="span" :to="{path : sub.link}">{{ sub.title }}</router-link>
-                            </el-menu-item>
-                        </el-submenu>
+              <el-menu-item v-for="(sub, subIndex) in nav.children" :key="sub.link" :index="sub.link">
+                <router-link tag="span" :to="{path : sub.link}">{{ sub.title }}</router-link>
+              </el-menu-item>
+            </el-submenu>
 
-                        <el-menu-item v-else :index="nav.link" :key="navIndex">
-                            <router-link tag="span" :to="{path : nav.link}">{{ nav.title }}</router-link>
-                        </el-menu-item>
-                    </template>
-                </el-menu-item-group>
-            </el-menu>
-            <div class="footer">
-                <el-tooltip class="item" effect="dark" content="邮箱：ask@iresearch.com.cn" placement="top-start">
-                </el-tooltip>
-                <el-tooltip class="item" effect="dark" content="电话：400-026-2099" placement="top-start">
-                </el-tooltip>
-                <el-tooltip class="item" effect="dark" content="名词解释" placement="top-start">
-                </el-tooltip>
-            </div>
-        </div>
-        <div class="content">
-            <div class="breadcrumb">
-            </div>
-            <router-view></router-view>
-        </div>
+            <el-menu-item v-else :index="nav.link" :key="navIndex">
+              <router-link tag="span" :to="{path : nav.link}">{{ nav.title }}</router-link>
+            </el-menu-item>
+          </template>
+        </el-menu-item-group>
+      </el-menu>
+      <div class="footer">
+        <el-tooltip class="item" effect="dark" content="邮箱：ask@iresearch.com.cn" placement="top-start">
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="电话：400-026-2099" placement="top-start">
+        </el-tooltip>
+        <el-tooltip class="item" effect="dark" content="名词解释" placement="top-start">
+        </el-tooltip>
+      </div>
     </div>
+    <div class="content">
+      <div class="breadcrumb">
+      </div>
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <script>
