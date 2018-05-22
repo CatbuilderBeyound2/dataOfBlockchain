@@ -1,16 +1,19 @@
 <template>
   <div class="overview-item">
-    <i class="icon" :style="{backgroundImage:`url(${detail.icon})`}"></i>
+    <i class="icon-main" :style="{backgroundImage:`url(${detail.icon})`}"></i>
     <div class="detail-wrap">
-      <div class="detail-title">
-        {{detail.title}}
-      </div>
-      <div class="detail-count">
-        <countTo :startVal='0' :endVal='detail.count.value' :duration='3000'></countTo>
-        <span class="count-unit">{{detail.count.unit}}</span>
-      </div>
-      <div class="detail-trend">
-
+      <div>
+        <div class="detail-title">
+          {{detail.title}}
+        </div>
+        <div class="detail-count">
+          <countTo :startVal='0' :endVal='detail.count.value' :duration='3000'></countTo>
+          <span class="count-unit">{{detail.count.unit}}</span>
+        </div>
+        <div :class="`detail-trend ${detail.trendStatus===1?'up':'down'}`">
+          <span>{{detail.trend}}</span>
+          <i class="icon-trend">{{detail.trendStatus===1?'↑':'↓'}}</i>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +33,7 @@ export default {
             value: 2000,
             unit: '万'
           },
-          trend: '',
+          trend: '+2%',
           trendStatus: 1
         };
       }
@@ -40,19 +43,46 @@ export default {
 </script>
 <style lang="less" scoped>
 .overview-item {
-  height: 200px;
+  height: 60px;
   > i,
   > div {
     display: inline-block;
     height: 100%;
-    vertical-align: middle
+    vertical-align: middle;
   }
-  .icon {
-    width: 100px;
+  .icon-main {
+    width: 40px;
     background: center no-repeat;
-    background-size: contain
+    background-size: contain;
   }
-
+  .detail-wrap > div {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+     .detail-count{
+        font-size: 30px;
+        font-weight: 600;
+        .count-unit{
+          font-size: 16px;
+        font-weight: 300;
+        }
+      }
+      .detail-trend{
+      }
+      .up{
+        color: #69C72B
+      }
+      .down{
+        color:crimson
+      }
+    > div {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+     
+    }
+  }
 }
 </style>
 
