@@ -5,7 +5,8 @@
   "author": "Dec-F <dec_fan@icloud.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev":
+      "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
     "precommit": "lint-staged"
@@ -16,15 +17,13 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.9",
     "vue": "^2.5.2",
+    "vue-count-to": "^1.0.13",
     "vue-echarts": "^3.0.7",
     "vue-router": "^3.0.1"
   },
@@ -74,9 +73,5 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
