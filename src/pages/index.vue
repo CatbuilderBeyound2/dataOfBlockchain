@@ -51,17 +51,25 @@ export default {
           address: '上海市普陀区金沙江路 1518 弄',
           echarts: {
             xAxis: {
-              type: 'value',
-              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+              type: 'category',
+              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              show: false
             },
             yAxis: {
-              type: 'value'
+              type: 'value',
+              show: false,
+              scale: true
+            },
+            grid: {
+              y: 1,
+              height: '100%'
             },
             series: [
               {
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                data: [1, 2, 3, 4, 3, 5, 7],
                 type: 'line',
-                smooth: true
+                showAllSymbol: true,
+                showSymbol :false
               }
             ]
           }
