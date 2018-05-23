@@ -6,6 +6,7 @@
 <script>
 import overviewItem from './overview-item';
 export default {
+  name:'overview',
   components: {
     overviewItem
   },
