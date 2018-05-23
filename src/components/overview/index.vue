@@ -1,6 +1,6 @@
 <template>
   <div class="overview">
-    <overviewItem v-for="item in overview" :detail="item"></overviewItem>
+    <overviewItem v-for="(item,index) in overview" :key="index" :detail="item"></overviewItem>
   </div>
 </template>
 <script>
