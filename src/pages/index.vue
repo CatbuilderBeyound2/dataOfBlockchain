@@ -39,15 +39,31 @@
       <div class="breadcrumb">
       </div>
       <router-view></router-view>
+
+      <ViewHead></ViewHead>
+      <ViewSearch></ViewSearch>
+      <ViewData></ViewData>
+      <ViewContent></ViewContent>
+
     </div>
   </div>
 </template>
 
 <script>
 import api from '@/api';
+import ViewHead from '@/components/ViewHead';
+import ViewSearch from '@/components/ViewSearch';
+import ViewData from '@/components/ViewData';
+import ViewContent from '@/components/ViewContent';
+
 export default {
   name: 'index',
-  components: {},
+  components: {
+    ViewHead,
+    ViewSearch,
+    ViewData,
+    ViewContent
+  },
   data() {
     return {
       initPath: this.$route.path,
