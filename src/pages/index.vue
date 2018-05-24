@@ -1,17 +1,20 @@
 <template>
   <div class="index">
-    <!-- <overview></overview> -->
+    <overview></overview>
     <table1 :headerData="header" :tableData="tableData"></table1>
+    <table2 :headerData="header" :tableData="tableData"></table2>
   </div>
 </template>
 
 <script>
 import overview from '@/components/overview';
 import table1 from '@/components/table/table1';
+import table2 from '@/components/table/table2';
 export default {
   components: {
     overview,
-    table1
+    table1,
+    table2
   },
   data() {
     let data = [];
