@@ -1,0 +1,23 @@
+.color-primary {
+  color: #69c72b;
+}
+
+.el-button--primary {
+  color: #fff;
+  background-color: #69c72b;
+  border-color: #69c72b;
+}
+
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: #69c72b;
+}
+
+.el-date-table td.today span {
+  color: #69c72b;
+  font-weight: 700;
+}
+
+.el-date-table td.today span :hover {
+  color: #69c72b;
+  font-weight: 700;
+}
