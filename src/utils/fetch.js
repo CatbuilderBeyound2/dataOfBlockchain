@@ -1,25 +1,23 @@
 import axios from "axios";
-import {Message, MessageBox} from "element-ui";
+import { Message, MessageBox } from "element-ui";
 
-const fetch = axios.create({baseURL: "/mst/"});
+const fetch = axios.create({ baseURL: "/mst/" });
 
-fetch
-  .interceptors
-  .request
-  .use(config => {
+fetch.interceptors.request.use(
+  config => {
     if (localStorage.getItem("token")) {
       config.headers.Authorization = `${localStorage.getItem("token")}`;
     }
     return config;
-  }, error => {
+  },
+  error => {
     console.log(error); // for debug
     return Promise.reject(error);
-  });
+  }
+);
 
-fetch
-  .interceptors
-  .response
-  .use(response => {
+fetch.interceptors.response.use(
+  response => {
     const res = response.data;
     if (res.resCode !== 200) {
       Message({
@@ -42,17 +40,19 @@ fetch
     } else {
       return response.data;
     }
-  }, error => {
+  },
+  error => {
     console.log(error);
     // router.replace('NotFound')
     switch (error.response.status) {
       case 500:
-        Message({message: "系统异常！", type: "warning"});
+        Message({ message: "系统异常！", type: "warning" });
         break;
       default:
         break;
     }
     return Promise.reject(error);
-  });
+  }
+);
 
 export default fetch;
