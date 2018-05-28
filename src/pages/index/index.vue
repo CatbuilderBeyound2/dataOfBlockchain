@@ -4,7 +4,6 @@
     <div class="index-search"></div>
     <div class="overview-wrap"></div>
     <indexTab></indexTab>
-
     <router-view></router-view>
   </div>
 </template>
@@ -77,7 +76,7 @@ export default {
                 data: [1, 2, 3, 4, 3, 5, 7],
                 type: 'line',
                 showAllSymbol: true,
-                showSymbol :false
+                showSymbol: false
               }
             ]
           }
@@ -102,3 +101,24 @@ export default {
   }
 };
 </script>
+
+<style lang="less">
+  .index{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    .header{
+      height: 30px;
+      background-color: antiquewhite
+    }
+    .index-search{
+      height: 100px;
+      background-color: aquamarine
+    }
+    .overview-wrap{
+      height: 200px;
+      background-color: blueviolet
+    }
+  }
+</style>
+
