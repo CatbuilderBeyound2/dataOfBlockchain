@@ -1,8 +1,20 @@
 <template>
   <div class="index">
-    <div class="header"></div>
+    <div class="header">
+      <ul>
+        <li>艾瑞集团</li>
+        <li>艾瑞咨询</li>
+        <li>艾瑞数据</li>
+        <li>艾瑞资本</li>
+        <li>艾瑞网</li>
+        <li>艾瑞活动</li>
+        <li>English</li>
+      </ul>
+    </div>
     <div class="index-search"></div>
-    <div class="overview-wrap"></div>
+    <div class="overview-wrap">
+      <overview></overview>
+    </div>
     <indexTab></indexTab>
     <router-view></router-view>
   </div>
@@ -103,22 +115,42 @@ export default {
 </script>
 
 <style lang="less">
-  .index{
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    .header{
-      height: 30px;
-      background-color: antiquewhite
-    }
-    .index-search{
-      height: 100px;
-      background-color: aquamarine
-    }
-    .overview-wrap{
-      height: 200px;
-      background-color: blueviolet
+@import '~@style/var.less';
+.index {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  border: 1px solid @border-color;
+  .header {
+    height: 30px;
+    ul {
+      float: right;
+      li {
+        list-style: none;
+        float: left;
+        padding-right: 5px;
+        margin-left: 5px;
+        border-right: 1px #333 solid;
+        cursor: pointer;
+      }
+      li:nth-last-child(1) {
+        border: none;
+      }
+      li:hover {
+        color: @primary-color;
+      }
     }
   }
+  .index-search {
+    height: 100px;
+    background-color: aquamarine;
+  }
+  .overview-wrap {
+    padding: 30px 0;
+    border-bottom: 1px solid @border-color;
+    .overview {
+    }
+  }
+}
 </style>
 
