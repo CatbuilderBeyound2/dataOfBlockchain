@@ -1,5 +1,4 @@
 export default {
-  name: "table1",
   props: {
     headerData: {
       type: Array,

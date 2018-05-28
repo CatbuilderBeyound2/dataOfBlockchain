@@ -1,8 +1,11 @@
 <template>
   <div class="index">
-    <overview></overview>
-    <table1 :headerData="header" :tableData="tableData"></table1>
-    <table2 :headerData="header" :tableData="tableData"></table2>
+    <div class="header"></div>
+    <div class="index-search"></div>
+    <div class="overview-wrap"></div>
+    <indexTab></indexTab>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -10,11 +13,13 @@
 import overview from '@/components/overview';
 import table1 from '@/components/table/table1';
 import table2 from '@/components/table/table2';
+import indexTab from './index-tab';
 export default {
   components: {
     overview,
     table1,
-    table2
+    table2,
+    indexTab
   },
   data() {
     let data = [];
