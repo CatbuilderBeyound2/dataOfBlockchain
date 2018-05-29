@@ -24,9 +24,10 @@ export default {
 };
 </script>
 <style lang="less">
+@import '~@style/var.less';
 .table-1 {
   .el-table tr.table-1-header th {
-    background-color: #69c72b;
+    background-color: @primary-color;
     color: aliceblue;
   }
   .echarts {

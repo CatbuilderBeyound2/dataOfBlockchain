@@ -5,6 +5,10 @@ export default {
       default() {
         return [{ label: "a" }];
       }
+    },
+    activeName: {
+      type: String,
+      default: ""
     }
   },
   data() {
