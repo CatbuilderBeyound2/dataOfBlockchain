@@ -1,7 +1,7 @@
 <template>
   <el-tabs :value="active" type="card" @tab-click="handleClick">
     <el-tab-pane v-for="(item,index) in tabs" :label="item.label" :key="index" :name="item.name">
-      <table1 :headerData='header' :tableData='tableData'></table1>
+      <table1 v-if="item.name===active" :headerData='header' :tableData='tableData'></table1>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -95,7 +95,7 @@ export default {
             },
             series: [
               {
-                data: [1, 2, 3, 4, 3, 5, 7],
+                data: [1, 8, 3, 4, 3, 5, 7],
                 type: 'line',
                 showAllSymbol: true,
                 showSymbol: false
@@ -124,7 +124,7 @@ export default {
             },
             series: [
               {
-                data: [1, 2, 3, 4, 3, 5, 7],
+                data: [1, 2, 3, 9, 3, 5, 7],
                 type: 'line',
                 showAllSymbol: true,
                 showSymbol: false
@@ -153,7 +153,7 @@ export default {
             },
             series: [
               {
-                data: [1, 2, 3, 4, 3, 5, 7],
+                data: [5, 2, 3, 4, 3, 5, 7],
                 type: 'line',
                 showAllSymbol: true,
                 showSymbol: false

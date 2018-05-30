@@ -11,7 +11,10 @@
         <li>English</li>
       </ul>
     </div>
-    <div class="index-search"></div>
+    <div class="index-search">
+      <img src="http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png" class="logo" alt="">
+      <search></search>
+    </div>
     <div class="overview-wrap">
       <overview></overview>
     </div>
@@ -25,12 +28,14 @@ import overview from '@/components/overview';
 import table1 from '@/components/table/table1';
 import table2 from '@/components/table/table2';
 import indexTab from './index-tab';
+import search from '@/components/search';
 export default {
   components: {
     overview,
     table1,
     table2,
-    indexTab
+    indexTab,
+    search
   },
   data() {
     return {
@@ -39,7 +44,7 @@ export default {
         { label: '交易大厅', name: 'jiaoyi' },
         { label: '排行榜', name: 'rank' }
       ],
-      activeName:'rank'
+      activeName: 'rank'
     };
   }
 };
@@ -47,21 +52,29 @@ export default {
 
 <style lang="less">
 @import '~@style/var.less';
+@import '~@style/mixins.less';
+body {
+  background-color: @bg-color;
+}
 .index {
   width: 100%;
   max-width: 1000px;
   margin: auto;
   border: 1px solid @border-color;
   .header {
-    height: 30px;
+    height: 32px;
+    background-color: @fill-color;
+    color: @text-color;
     ul {
       float: right;
       li {
         list-style: none;
         float: left;
         padding: 0 5px;
-        border-right: 1px #333 solid;
+        border-right: 1px @text-color solid;
         cursor: pointer;
+        .text(12,16);
+        margin: 8px 0;
       }
       li:nth-last-child(1) {
         border: none;
@@ -72,8 +85,21 @@ export default {
     }
   }
   .index-search {
-    height: 100px;
-    background-color: aquamarine;
+    height: 80px;
+    border-bottom: 1px solid @border-color;
+    .logo{
+      .size(108,80);
+      float: left
+    }
+    .searchSelect {
+      border: 1px solid @border-color;
+      width: 360px;
+      float: right;
+      margin: 20px 0;
+      .el-autocomplete {
+        width: 100%;
+      }
+    }
   }
   .overview-wrap {
     padding: 30px 0;
