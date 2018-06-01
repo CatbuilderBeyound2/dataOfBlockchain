@@ -44,7 +44,7 @@ export default {
         { label: '交易大厅', name: 'jiaoyi' },
         { label: '排行榜', name: 'rank' }
       ],
-      activeName: 'rank'
+      activeName: 'rank1'
     };
   }
 };

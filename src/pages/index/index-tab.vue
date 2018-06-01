@@ -178,3 +178,14 @@ export default {
   }
 };
 </script>
+<style lang="less">
+.tabs {
+  .el-tabs__nav {
+    display: flex;
+    width: 100%;
+    > div {
+      flex-grow: 1;
+    }
+  }
+}
+</style>
