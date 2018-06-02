@@ -19,6 +19,7 @@
       <overview></overview>
     </div>
     <indexTab :tabs="tabs" :activeName="activeName"></indexTab>
+    <noticeWindow></noticeWindow>
     <router-view></router-view>
   </div>
 </template>
@@ -29,13 +30,15 @@ import table1 from '@/components/table/table1';
 import table2 from '@/components/table/table2';
 import indexTab from './index-tab';
 import search from '@/components/search';
+import noticeWindow from '../notice/noticeWindow';
 export default {
   components: {
     overview,
     table1,
     table2,
     indexTab,
-    search
+    search,
+    noticeWindow
   },
   data() {
     return {
@@ -61,6 +64,7 @@ body {
   max-width: 1000px;
   margin: auto;
   border: 1px solid @border-color;
+  position: relative;
   .header {
     height: 32px;
     background-color: @fill-color;
@@ -106,6 +110,9 @@ body {
     border-bottom: 1px solid @border-color;
     .overview {
     }
+  }
+  .notice-window{
+    .pos(-180,400)
   }
 }
 </style>
