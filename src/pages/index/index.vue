@@ -20,7 +20,7 @@
     </div>
     <indexTab :tabs="tabs" :activeName="activeName" @tab-change='tabChange'></indexTab>
     <noticeWindow></noticeWindow>
-    <router-view v-if="!hideRouterView"></router-view>
+    <router-view class="router" v-if="!hideRouterView"></router-view>
   </div>
 </template>
 
@@ -39,6 +39,13 @@ export default {
     indexTab,
     search,
     noticeWindow
+  },
+  created() {
+    this.hideRouterView =
+      typeof this.$route.meta.hideRouterView === 'undefined' ? false : true;
+    if (!this.hideRouterView) {
+      this.activeName = 'none';
+    }
   },
   data() {
     return {
@@ -81,7 +88,7 @@ body {
   width: 100%;
   max-width: 1000px;
   margin: auto;
-  border: 1px solid @border-color;
+  // border: 1px solid @border-color;
   position: relative;
   .header {
     height: 32px;
@@ -108,7 +115,8 @@ body {
   }
   .index-search {
     height: 80px;
-    border-bottom: 1px solid @border-color;
+    border: 1px solid @border-color;
+    border-bottom: none;
     .logo {
       .size(108,80);
       float: left;
@@ -125,12 +133,18 @@ body {
   }
   .overview-wrap {
     padding: 30px 0;
-    border-bottom: 1px solid @border-color;
+    border: 1px solid @border-color;
+    border-bottom: none;
     .overview {
     }
   }
   .notice-window {
     .pos(-180,400);
+  }
+  .router {
+    margin-top: 30px;
+    border: 1px solid @border-color;
+    border-bottom: none;
   }
 }
 </style>

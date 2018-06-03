@@ -72,6 +72,7 @@ export default {
       .text(12,14);
       box-sizing: content-box;
       cursor: pointer;
+      font-weight: 600;
       &:hover {
         color: @primary-color;
       }
