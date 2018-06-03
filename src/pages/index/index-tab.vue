@@ -1,9 +1,11 @@
 <template>
-  <el-tabs :value="active" type="card" @tab-click="handleClick">
-    <el-tab-pane v-for="(item,index) in tabs" :label="item.label" :key="index" :name="item.name">
-      <table1 v-if="item.name===active" :headerData='header' :tableData='tableData'></table1>
-    </el-tab-pane>
-  </el-tabs>
+  <div class="tabs">
+    <el-tabs :value="active" type="card" @tab-click="handleClick">
+      <el-tab-pane v-for="(item,index) in tabs" :label="item.label" :key="index" :name="item.name">
+        <table1 v-if="item.name===active" :headerData='header' :tableData='tableData'></table1>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 <script>
 import table1 from '@/components/table/table1';
