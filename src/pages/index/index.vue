@@ -18,9 +18,9 @@
     <div class="overview-wrap">
       <overview></overview>
     </div>
-    <indexTab :tabs="tabs" :activeName="activeName"></indexTab>
+    <indexTab :tabs="tabs" :activeName="activeName" @tab-change='tabChange'></indexTab>
     <noticeWindow></noticeWindow>
-    <router-view></router-view>
+    <router-view v-if="!hideRouterView"></router-view>
   </div>
 </template>
 
@@ -47,8 +47,26 @@ export default {
         { label: '交易大厅', name: 'jiaoyi' },
         { label: '排行榜', name: 'rank' }
       ],
-      activeName: 'rank1'
+      activeName: 'hangqing',
+      hideRouterView: true
     };
+  },
+  methods: {
+    tabChange(tab) {
+      this.$router.push('/');
+      this.activeName = tab.name;
+    }
+  },
+  watch: {
+    $route(val) {
+      this.hideRouterView =
+        typeof val.meta.hideRouterView === 'undefined' ? false : true;
+    },
+    hideRouterView(val) {
+      if (!val) {
+        this.activeName = 'none'; //收回tab
+      }
+    }
   }
 };
 </script>
@@ -91,9 +109,9 @@ body {
   .index-search {
     height: 80px;
     border-bottom: 1px solid @border-color;
-    .logo{
+    .logo {
       .size(108,80);
-      float: left
+      float: left;
     }
     .searchSelect {
       border: 1px solid @border-color;
@@ -111,8 +129,8 @@ body {
     .overview {
     }
   }
-  .notice-window{
-    .pos(-180,400)
+  .notice-window {
+    .pos(-180,400);
   }
 }
 </style>

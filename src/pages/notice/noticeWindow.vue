@@ -1,7 +1,8 @@
 <template>
   <div class="notice-window">
-    <div class="collapse" :class="{isShow:isShow}">
+    <div class="collapse" :class="{isShow:!isShow}">
       <ul class="collapse-content">
+        <div class="collapse-title" @click="goto">各大交易所最新公告</div>
         <li>最新公告最新公告</li>
         <li>最新公告最新公告</li>
         <li>最新公告最新公告</li>
@@ -29,6 +30,10 @@ export default {
   methods: {
     toggle() {
       this.isShow = !this.isShow;
+    },
+    goto() {
+      this.$router.push('/notice');
+      this.toggle();
     }
   }
 };
@@ -42,13 +47,13 @@ export default {
   .collapse-content {
     list-style: none;
     .middle;
-    top: -72px;
+    top: -92px;
     width: 100%;
     border: 1px solid @border-color;
     border-bottom: none;
     transition: all 1s;
     overflow: hidden;
-    height: 164px;
+    height: 194px;
     border-radius: 5px;
     li {
       margin-top: 10px;
@@ -56,8 +61,26 @@ export default {
       &:nth-last-child(1) {
         padding-bottom: 20px;
       }
-      &:hover{
-        color: @primary-color
+      &:hover {
+        color: @primary-color;
+      }
+    }
+    .collapse-title {
+      border-bottom: 1px solid @border-color;
+      padding: 5px 0;
+      position: relative;
+      .text(12,14);
+      box-sizing: content-box;
+      cursor: pointer;
+      &:hover {
+        color: @primary-color;
+      }
+      &::after {
+        content: '';
+        .size(10,10);
+        .posr(6,6);
+        transform: rotateZ(90deg);
+        .bgi('/static/icon/iconfont_down.png');
       }
     }
   }
@@ -87,7 +110,7 @@ export default {
     }
     .collapse-content {
       height: 0;
-      top:0;
+      top: 0;
       opacity: 0;
     }
   }

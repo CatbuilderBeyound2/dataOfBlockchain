@@ -3,11 +3,15 @@ import Router from "vue-router";
 
 Vue.use(Router);
 const index = () => import("@/pages/index");
+const noticeList = () => import("@/pages/notice/noticeList");
 export default new Router({
   routes: [
     {
       path: "/",
       component: index,
+      meta: {
+        hideRouterView: true
+      },
       children: [
         {
           path: "search",
@@ -15,7 +19,7 @@ export default new Router({
         },
         {
           path: "notice",
-          component: index
+          component: noticeList
         }
       ]
     },
