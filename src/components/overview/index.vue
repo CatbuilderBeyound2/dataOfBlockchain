@@ -4,69 +4,71 @@
   </div>
 </template>
 <script>
-import overviewItem from './overview-item';
-import api from '@/api';
+import overviewItem from "./overview-item";
+import api from "@/api";
 export default {
-  name: 'overview',
+  name: "overview",
   components: {
-    overviewItem,
+    overviewItem
   },
-  created(){
-    this.fetchData()
+  created() {
+    this.fetchData();
   },
   data() {
     return {
       overview: [
         {
-          icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
-          title: '虚拟币',
+          title: "虚拟币",
           count: {
             value: 2000,
-            unit: '万',
+            unit: "万"
           },
-          trend: '+2%',
-          trendStatus: 1,
+          trend: "+2%",
+          trendStatus: 1
         },
         {
-          icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
-          title: '代币',
+          title: "代币",
           count: {
             value: 20000,
-            unit: '亿',
+            unit: "亿"
           },
-          trend: '-2%',
-          trendStatus: 2,
+          trend: "-2%",
+          trendStatus: 2
         },
         {
-          icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
-          title: '交易平台',
+          title: "交易平台",
           count: {
             value: 200000000000000000,
-            unit: '万',
+            unit: "万"
           },
-          trend: '+2%',
-          trendStatus: 1,
+          trend: "+2%",
+          trendStatus: 1
         },
         {
-          icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
-          title: '总市值',
+          title: "总市值",
           count: {
             value: 20000,
-            unit: '万',
+            unit: "万"
           },
-          trend: '-2%',
-          trendStatus: 2,
-        },
-      ],
+          trend: "-2%",
+          trendStatus: 2
+        }
+      ]
     };
   },
   methods: {
     fetchData() {
-      api.marketSummary().then(res => {
-        console.log(res);
+      let data = api.marketSummary().then(res => {
+        this.overview = res.tableHeader.reduce((acc, headerObj) => {
+          acc.push({
+            ...headerObj,
+            value: res.tableData[0][headerObj["column"]]
+          });
+          return acc;
+        }, []);
       });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="less">
@@ -79,6 +81,3 @@ export default {
   }
 }
 </style>
-
-
-
