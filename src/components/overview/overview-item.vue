@@ -1,6 +1,6 @@
 <template>
   <div class="overview-item">
-    <i class="icon-main" :style="{backgroundImage:`url(${detail.icon})`}"></i>
+    <!-- <i class="icon-main" :style="{backgroundImage:`url(${detail.icon})`}"></i> -->
     <div class="detail-wrap">
       <div>
         <div class="detail-title">
@@ -27,7 +27,7 @@ export default {
       type: Object,
       default() {
         return {
-          icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
+          // icon: 'http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png',
           title: '虚拟币',
           count: {
             value: 2000,
