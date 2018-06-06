@@ -38,43 +38,37 @@ export default {
     table2,
     indexTab,
     search,
-    noticeWindow
+    noticeWindow,
   },
   created() {
-    this.hideRouterView =
-      typeof this.$route.meta.hideRouterView === 'undefined' ? false : true;
+    this.hideRouterView = typeof this.$route.meta.hideRouterView === 'undefined' ? false : true;
     if (!this.hideRouterView) {
       this.activeName = 'none';
     }
   },
   data() {
     return {
-      tabs: [
-        { label: '行情数据', name: 'hangqing' },
-        { label: '交易大厅', name: 'jiaoyi' },
-        { label: '排行榜', name: 'rank' }
-      ],
+      tabs: [{ label: '行情数据', name: 'hangqing' }, { label: '交易大厅', name: 'jiaoyi' }, { label: '排行榜', name: 'rank' }],
       activeName: 'hangqing',
-      hideRouterView: true
+      hideRouterView: true,
     };
   },
   methods: {
     tabChange(tab) {
       this.$router.push('/');
       this.activeName = tab.name;
-    }
+    },
   },
   watch: {
     $route(val) {
-      this.hideRouterView =
-        typeof val.meta.hideRouterView === 'undefined' ? false : true;
+      this.hideRouterView = typeof val.meta.hideRouterView === 'undefined' ? false : true;
     },
     hideRouterView(val) {
       if (!val) {
         this.activeName = 'none'; //收回tab
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

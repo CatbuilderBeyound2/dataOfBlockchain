@@ -6,7 +6,10 @@ import apiMap from "./apiMap";
 const _createApi = () => {
   return Object.keys(apiMap).reduce((acc, name) => {
     acc[name] = params => {
-      return fetch(params);
+      return fetch({
+        url: apiMap[name],
+        ...params
+      });
     };
     return acc;
   }, {});

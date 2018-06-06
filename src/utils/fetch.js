@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Message, MessageBox } from "element-ui";
 
-const fetch = axios.create({ baseURL: "/mst/" });
+const fetch = axios.create({ baseURL: "/api" });
 
 fetch.interceptors.request.use(
   config => {
@@ -38,7 +38,7 @@ fetch.interceptors.response.use(
       console.log(res);
       return Promise.reject(res);
     } else {
-      return response.data;
+      return response.data.data;
     }
   },
   error => {
