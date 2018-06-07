@@ -18,7 +18,7 @@
     <div class="overview-wrap">
       <overview></overview>
     </div>
-    <indexTab :tabs="tabs" :activeName="activeName" @tab-change='tabChange'></indexTab>
+    <indexTab :activeName="activeName" @tab-change='tabChange'></indexTab>
     <noticeWindow></noticeWindow>
     <router-view class="router" v-if="!hideRouterView"></router-view>
   </div>
@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      tabs: [{ label: '行情数据', name: 'hangqing' }, { label: '交易大厅', name: 'jiaoyi' }, { label: '排行榜', name: 'rank' }],
       activeName: 'hangqing',
       hideRouterView: true,
     };
