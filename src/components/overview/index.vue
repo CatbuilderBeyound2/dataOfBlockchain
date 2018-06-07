@@ -16,58 +16,13 @@ export default {
   },
   data() {
     return {
-      overview: [
-        {
-          title: '虚拟币',
-          count: {
-            value: 2000,
-            unit: '万',
-          },
-          trend: '+2%',
-          trendStatus: 1,
-        },
-        {
-          title: '代币',
-          count: {
-            value: 20000,
-            unit: '亿',
-          },
-          trend: '-2%',
-          trendStatus: 2,
-        },
-        {
-          title: '交易平台',
-          count: {
-            value: 200000000000000000,
-            unit: '万',
-          },
-          trend: '+2%',
-          trendStatus: 1,
-        },
-        {
-          title: '总市值',
-          count: {
-            value: 20000,
-            unit: '万',
-          },
-          trend: '-2%',
-          trendStatus: 2,
-        },
-      ],
+      overview: [],
     };
   },
   methods: {
     fetchData() {
       api.marketSummary({ method: 'get' }).then(res => {
-        this.overview = res.tableHeader.reduce((acc, headerObj) => {
-          try {
-            acc.push({
-              ...headerObj,
-              value: res.tableData[0][headerObj['column']],
-            });
-          } catch (err) {}
-          return acc;
-        }, []);
+        this.overview = res.tableData;
       });
     },
   },
