@@ -2,35 +2,75 @@
   <div class="tabs">
     <el-tabs :value="active" @tab-click="handleClick" type="border-card">
       <el-tab-pane label="行情数据" name="hangqing">
-        <table1 v-if="'hangqing'===active" :headerData='header' :tableData='tableData'></table1>
+        <table1 v-if="'hangqing'===active" :headerData='hangqing.tableHeader' :tableData='hangqing.tableData'></table1>
+      </el-tab-pane>
+      <el-tab-pane label="交易大厅" name="jiaoyi">
+        <table2 v-if="'jiaoyi'===active" :headerData='jiaoyi.tableHeader' :tableData='jiaoyi.tableData'></table2>
+      </el-tab-pane>
+      <el-tab-pane label="排行榜" name="rank">
+        <table1 v-if="'rank'===active" :headerData='rank.tableHeader' :tableData='rank.tableData'></table1>
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 <script>
 import table1 from '@/components/table/table1';
+import table2 from '@/components/table/table2';
 import tabs from '@/mixins/tabs';
 import api from '@/api';
+const insertData2Chart = data => {
+  return {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      show: false,
+    },
+    yAxis: {
+      type: 'value',
+      show: false,
+      scale: true,
+    },
+    grid: {
+      y: 1,
+      height: '100%',
+    },
+    series: [
+      {
+        data: data,
+        type: 'line',
+        showAllSymbol: true,
+        showSymbol: false,
+      },
+    ],
+  };
+};
 export default {
   name: 'indexTab',
   components: {
     table1,
+    table2,
   },
   mixins: [tabs],
   created() {
     this.getMarketData();
+    this.getTrade();
+    this.rankings();
   },
   data() {
-    let data = [];
-    for (let i = 0; i <= 360; i++) {
-      let t = i / 180 * Math.PI;
-      let r = Math.sin(2 * t) * Math.cos(2 * t);
-      data.push([r, i]);
-    }
-
     return {
-      header: [],
-      tableData: [],
+      hangqing: {
+        tableHeader: [],
+        tableData: [],
+      },
+      jiaoyi: {
+        tableHeader: [],
+        tableData: [],
+      },
+      rank: {
+        tableHeader: [],
+        tableData: [],
+      },
+
       active: this.$props['activeName'],
     };
   },
@@ -46,59 +86,26 @@ export default {
     },
     getMarketData() {
       api.getMarketData().then(res => {
-        // echarts: {
-        //     xAxis: {
-        //       type: 'category',
-        //       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        //       show: false
-        //     },
-        //     yAxis: {
-        //       type: 'value',
-        //       show: false,
-        //       scale: true
-        //     },
-        //     grid: {
-        //       y: 1,
-        //       height: '100%'
-        //     },
-        //     series: [
-        //       {
-        //         data: [1, 2, 3, 4, 3, 5, 7],
-        //         type: 'line',
-        //         showAllSymbol: true,
-        //         showSymbol: false
-        //       }
-        //     ]
-        //   }
-        this.header = res.tableHeader;
-        this.tableData = res.tableData.map(v => {
-          v.echarts = {
-            xAxis: {
-              type: 'category',
-              data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-              show: false,
-            },
-            yAxis: {
-              type: 'value',
-              show: false,
-              scale: true,
-            },
-            grid: {
-              y: 1,
-              height: '100%',
-            },
-            series: [
-              {
-                data: v.priceGraph,
-                type: 'line',
-                showAllSymbol: true,
-                showSymbol: false,
-              },
-            ],
-          };
+        this.hangqing.tableHeader = res.tableHeader;
+        this.hangqing.tableData = res.tableData.map(v => {
+          v.echarts = insertData2Chart(v.priceGraph);
           return v;
         });
-        console.log(this.tableData);
+      });
+    },
+    getTrade() {
+      api.getTrade().then(res => {
+        this.jiaoyi.tableHeader = res.tableHeader;
+        this.jiaoyi.tableData = res.tableData;
+      });
+    },
+    rankings() {
+      api.rankings().then(res => {
+        this.rank.tableHeader = res.tableHeader;
+        this.rank.tableData = res.tableData.map(v => {
+          v.echarts = insertData2Chart(v.priceGraph);
+          return v;
+        });
       });
     },
   },

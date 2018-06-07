@@ -40,8 +40,8 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           "^/api": ""
-        },
-        logLevel: "debug"
+        }
+        // logLevel: "debug"
       }
     }
   },

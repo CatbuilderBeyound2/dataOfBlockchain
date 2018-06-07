@@ -32,7 +32,7 @@ export default {
     color: aliceblue;
   }
   .echarts {
-    height: 50px;
+    height: 23px;
     width: 100px;
     margin: auto;
   }

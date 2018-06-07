@@ -35,7 +35,6 @@ fetch.interceptors.response.use(
           duration: 5 * 1000
         });
       }
-      console.log(res);
       return Promise.reject(res);
     } else {
       return response.data.data;
