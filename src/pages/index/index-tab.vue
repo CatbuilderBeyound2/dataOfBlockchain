@@ -10,6 +10,8 @@
       <el-tab-pane label="排行榜" name="rank">
         <table1 v-if="'rank'===active" :headerData='rank.tableHeader' :tableData='rank.tableData'></table1>
       </el-tab-pane>
+      <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' small background layout="prev, pager, next" :total="1000">
+      </el-pagination>
     </el-tabs>
   </div>
 </template>
@@ -72,16 +74,30 @@ export default {
       },
 
       active: this.$props['activeName'],
+      pageSize: 15,
+      pageNo: 1,
     };
   },
   watch: {
     activeName(val) {
       this.active = val;
     },
+    pageNo() {
+      if (this.active === 'hangqing') {
+        this.getMarketData();
+      }
+      if (this.active === 'jiaoyi') {
+        this.getTrade();
+      }
+      if (this.active === 'rank') {
+        this.rankings();
+      }
+    },
   },
   methods: {
     handleClick(tab, event) {
       this.active = tab.name;
+      this.pageNo = 1;
       this.$emit('tab-change', tab);
     },
     getMarketData() {
@@ -119,6 +135,10 @@ export default {
     > div {
       flex-grow: 1;
     }
+  }
+  .el-pagination {
+    text-align: right;
+    margin-top: 20px;
   }
 }
 </style>
