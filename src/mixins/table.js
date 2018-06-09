@@ -14,14 +14,17 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      sortOrders: ["descending", "ascending"]
+    };
   },
   methods: {
-    rowClick(...rest) {
-      console.log(rest);
+    rowClick(params) {
+      console.log(params);
     },
-    sortChange(...rest) {
-      console.log(rest);
+    sortChange(params) {
+      console.log(params);
+      this.$emit("sort-change", params);
     }
   }
 };
