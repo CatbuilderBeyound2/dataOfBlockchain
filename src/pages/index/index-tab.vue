@@ -1,11 +1,11 @@
 <template>
   <div class="tabs">
     <el-tabs :value="active" @tab-click="handleClick" type="border-card">
-      <el-tab-pane label="行情数据" name="hangqing">
-        <table1 v-if="'hangqing'===active" :headerData='hangqing.tableHeader' :tableData='hangqing.tableData'></table1>
+      <el-tab-pane label="行情数据" name="quotation">
+        <table1 v-if="'quotation'===active" :headerData='quotation.tableHeader' :tableData='quotation.tableData'></table1>
       </el-tab-pane>
-      <el-tab-pane label="交易大厅" name="jiaoyi">
-        <table2 v-if="'jiaoyi'===active" :headerData='jiaoyi.tableHeader' :tableData='jiaoyi.tableData'></table2>
+      <el-tab-pane label="交易大厅" name="transaction">
+        <table2 v-if="'transaction'===active" :headerData='transaction.tableHeader' :tableData='transaction.tableData'></table2>
       </el-tab-pane>
       <el-tab-pane label="排行榜" name="rank">
         <table1 v-if="'rank'===active" :headerData='rank.tableHeader' :tableData='rank.tableData'></table1>
@@ -60,11 +60,11 @@ export default {
   },
   data() {
     return {
-      hangqing: {
+      quotation: {
         tableHeader: [],
         tableData: [],
       },
-      jiaoyi: {
+      transaction: {
         tableHeader: [],
         tableData: [],
       },
@@ -83,10 +83,10 @@ export default {
       this.active = val;
     },
     pageNo() {
-      if (this.active === 'hangqing') {
+      if (this.active === 'quotation') {
         this.getMarketData();
       }
-      if (this.active === 'jiaoyi') {
+      if (this.active === 'transaction') {
         this.getTrade();
       }
       if (this.active === 'rank') {
@@ -102,8 +102,8 @@ export default {
     },
     getMarketData() {
       api.getMarketData().then(res => {
-        this.hangqing.tableHeader = res.tableHeader;
-        this.hangqing.tableData = res.tableData.map(v => {
+        this.quotation.tableHeader = res.tableHeader;
+        this.quotation.tableData = res.tableData.map(v => {
           v.echarts = insertData2Chart(v.priceGraph);
           return v;
         });
@@ -111,8 +111,8 @@ export default {
     },
     getTrade() {
       api.getTrade().then(res => {
-        this.jiaoyi.tableHeader = res.tableHeader;
-        this.jiaoyi.tableData = res.tableData;
+        this.transaction.tableHeader = res.tableHeader;
+        this.transaction.tableData = res.tableData;
       });
     },
     rankings() {

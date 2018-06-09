@@ -55,5 +55,9 @@ export default {
     background-color: #dedede;
     color: #999999;
   }
+  .el-tag{
+    height: 23px;
+    line-height: 23px
+  }
 }
 </style>

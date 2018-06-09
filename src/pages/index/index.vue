@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="index-search">
-      <img src="http://omqz8y2im.bkt.clouddn.com/business-mix-set-2012.png" class="logo" alt="">
+      <img src="/static/icon/logo.png" class="logo" alt="">
       <search></search>
     </div>
     <div class="overview-wrap">
@@ -48,7 +48,7 @@ export default {
   },
   data() {
     return {
-      activeName: 'hangqing',
+      activeName: 'quotation',
       hideRouterView: true,
     };
   },
@@ -111,8 +111,9 @@ body {
     border: 1px solid @border-color;
     border-bottom: none;
     .logo {
-      .size(108,80);
+      .size(100,48);
       float: left;
+      margin: 15px 0 0 15px
     }
     .searchSelect {
       border: 1px solid @border-color;
