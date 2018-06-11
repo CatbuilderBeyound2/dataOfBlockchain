@@ -26,16 +26,12 @@
 
 <script>
 import overview from '@/components/overview';
-import table1 from '@/components/table/table1';
-import table2 from '@/components/table/table2';
 import indexTab from './index-tab';
 import search from '@/components/search';
 import noticeWindow from '../notice/noticeWindow';
 export default {
   components: {
     overview,
-    table1,
-    table2,
     indexTab,
     search,
     noticeWindow,
@@ -113,7 +109,7 @@ body {
     .logo {
       .size(100,48);
       float: left;
-      margin: 15px 0 0 15px
+      margin: 15px 0 0 15px;
     }
     .searchSelect {
       border: 1px solid @border-color;
@@ -139,6 +135,7 @@ body {
     margin-top: 30px;
     border: 1px solid @border-color;
     border-bottom: none;
+    .box-shadow
   }
 }
 </style>

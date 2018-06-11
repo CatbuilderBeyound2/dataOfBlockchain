@@ -134,7 +134,7 @@ export default {
             v.echarts = insertData2Chart(v.priceGraph);
             return v;
           });
-          this.total = res.total||100;
+          this.total = res.total || 100;
         });
     },
     getTrade() {
@@ -153,7 +153,7 @@ export default {
             return v;
           });
           this.transaction.tableData = res.tableData;
-          this.total = res.total||100;
+          this.total = res.total || 100;
         });
     },
     rankings() {
@@ -175,7 +175,7 @@ export default {
             v.echarts = insertData2Chart(v.priceGraph);
             return v;
           });
-          this.total = res.total||100;
+          this.total = res.total || 100;
         });
     },
     sortChange(params) {
@@ -191,6 +191,7 @@ export default {
 };
 </script>
 <style lang="less">
+@import '~@style/var.less';
 .tabs {
   .el-tabs__nav {
     display: flex;
@@ -198,6 +199,9 @@ export default {
     > div {
       flex-grow: 1;
     }
+  }
+  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+    color: @primary-color;
   }
   .el-pagination {
     text-align: right;

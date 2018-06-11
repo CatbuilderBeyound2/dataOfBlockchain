@@ -1,8 +1,8 @@
 <template>
-    <div class="searchSelect">
-        <img class="select__icon-cur" :src="icon">
-        <el-autocomplete placeholder="请输入您所要查找的内容..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" prefix-icon="el-icon-search"></el-autocomplete>
-    </div>
+  <div class="searchSelect">
+    <el-autocomplete placeholder="请输入您所要查找的内容..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" suffix-icon="el-icon-search"></el-autocomplete>
+    <img class="select__icon-cur" :src="icon">
+  </div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     return {
       id: '',
       icon: '',
-      searchKey: ''
+      searchKey: '',
     };
   },
   props: {
@@ -22,22 +22,18 @@ export default {
         return [
           {
             id: '',
-            name: ''
-          }
+            name: '',
+          },
         ];
-      }
-    }
+      },
+    },
   },
-  created() {
-    
-  },
+  created() {},
   methods: {
     querySearch(queryString, cb) {
       let self = this,
         { channels } = self;
-      let results = queryString
-        ? channels.filter(self.createFilter(queryString))
-        : [];
+      let results = queryString ? channels.filter(self.createFilter(queryString)) : [];
       cb(results);
     },
     createFilter(queryString) {
@@ -48,7 +44,7 @@ export default {
     handleSelect(item) {
       this.id = item.id;
       this.$emit('change', this.id);
-    }
+    },
   },
   beforeMount() {
     this.id = this.channels[0] && this.channels[0].id;
@@ -59,8 +55,8 @@ export default {
       try {
         this.icon = this.channels.find(item => item.id === cur).icon;
       } catch (err) {}
-    }
-  }
+    },
+  },
 };
 </script>
 
