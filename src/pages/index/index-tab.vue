@@ -139,7 +139,7 @@ export default {
     },
     getTrade() {
       api
-        .trade({
+        .getTrade({
           params: this.collectingParams(),
         })
         .then(res => {
