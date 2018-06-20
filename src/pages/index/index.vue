@@ -17,10 +17,17 @@
     </div>
     <div class="overview-wrap">
       <overview></overview>
+      <noticeWindow></noticeWindow>
     </div>
     <indexTab :activeName="activeName" @tab-change='tabChange'></indexTab>
-    <noticeWindow></noticeWindow>
     <router-view class="router" v-if="!hideRouterView"></router-view>
+    <div class="footer">
+      <div class="contact">联系我们&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
+      <div class="phone-num">400-026-2099</div>
+      <div class="email">ask@ireseach.com.cn</div>
+      <div class="copy-right">2002-2018 Copyright© 艾瑞数据</div>
+      <div class="copy-num">啊实打实大苏打</div>
+    </div>
   </div>
 </template>
 
@@ -72,13 +79,16 @@ export default {
 @import '~@style/mixins.less';
 body {
   background-color: @bg-color;
+  #app {
+    position: relative;
+  }
 }
 .index {
   width: 100%;
   max-width: 1000px;
+  min-height: 1000px;
   margin: auto;
   // border: 1px solid @border-color;
-  position: relative;
   .header {
     height: 32px;
     background-color: @fill-color;
@@ -125,17 +135,53 @@ body {
     padding: 30px 0;
     border: 1px solid @border-color;
     border-bottom: none;
+    position: relative;
     .overview {
     }
+    .notice-window {
+      .pos(-180,400);
+    }
   }
-  .notice-window {
-    .pos(-180,400);
-  }
+
   .router {
     margin-top: 30px;
     border: 1px solid @border-color;
     border-bottom: none;
-    .box-shadow
+    .box-shadow;
+  }
+  .footer {
+    position: absolute;
+    left: 0;
+    bottom: -170px;
+    background-color: #39434d;
+    height: 170px;
+    width: 99vw;
+    color: @text-color;
+    text-align: center;
+    overflow: hidden;
+    .contact {
+      color: @primary-color;
+      font-size: 16px;
+      position: relative;
+      width: 200px;
+      margin: 45px auto 0 auto;
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 100px;
+        height: 1px;
+        background-color: @primary-color;
+        .pos(-100,7);
+      }
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 100px;
+        height: 1px;
+        background-color: @primary-color;
+        .posr(-100,7);
+      }
+    }
   }
 }
 </style>
