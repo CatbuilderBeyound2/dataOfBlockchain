@@ -138,9 +138,11 @@ body {
   }
   .overview-wrap {
     padding: 30px 0;
+    max-width: 1000px;
+    margin: 0 auto;
     border: 1px solid @border-color;
-    border-bottom: none;
     position: relative;
+    margin-bottom: 20px;
     .overview {}
     .notice-window {
       .pos(0, 350);
