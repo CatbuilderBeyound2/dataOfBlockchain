@@ -3929,6 +3929,7 @@
   background-color: #fff;
   border-right-color: #dcdfe6;
   border-left-color: #dcdfe6;
+  border-top: 4px solid;
 }
 .el-tabs--border-card > .el-tabs__header .el-tabs__item:hover {
   color: #69c72b;

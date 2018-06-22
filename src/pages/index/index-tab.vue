@@ -42,6 +42,13 @@ const insertData2Chart = data => {
         type: 'line',
         showAllSymbol: true,
         showSymbol: false,
+        itemStyle: {
+          normal: {
+            lineStyle: {
+              color: '#69c72b'
+            }
+          }
+        },
       },
     ],
   };
@@ -193,14 +200,16 @@ export default {
 <style lang="less">
 @import '~@style/var.less';
 .tabs {
+  max-width: 1000px;
+  margin: 0 auto;
   .el-tabs__nav {
     display: flex;
     width: 100%;
-    > div {
+    >div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
   .el-pagination {

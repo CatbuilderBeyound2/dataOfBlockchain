@@ -1,6 +1,6 @@
 <template>
   <div class="searchSelect">
-    <el-autocomplete placeholder="请输入您所要查找的内容..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" suffix-icon="el-icon-search"></el-autocomplete>
+    <el-autocomplete placeholder="搜索您要查看的币种/平台关键字..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" suffix-icon="el-icon-search"></el-autocomplete>
     <img class="select__icon-cur" :src="icon">
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       },
     },
   },
-  created() {},
+  created() { },
   methods: {
     querySearch(queryString, cb) {
       let self = this,
@@ -54,7 +54,7 @@ export default {
     id: function(cur) {
       try {
         this.icon = this.channels.find(item => item.id === cur).icon;
-      } catch (err) {}
+      } catch (err) { }
     },
   },
 };
@@ -64,6 +64,7 @@ export default {
 .searchSelect {
   position: relative;
 }
+
 .select__icon-cur {
   position: absolute;
   left: 0;

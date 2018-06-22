@@ -1,7 +1,7 @@
 //
 <template>
   <div class="table-2">
-    <el-table :data="tableData" header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
+    <el-table :data="tableData" stripe header-row-class-name="table-2-header" @row-click="rowClick" @sort-change="sortChange">
       <template v-for="(item ,index) in headerData">
         <el-table-column v-if="item.column==='tradeType'" width="200" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
@@ -50,14 +50,17 @@ export default {
 };
 </script>
 <style lang="less">
+@import '~@style/var.less';
 .table-2 {
-  .el-table tr.table-2-header > th {
-    background-color: #dedede;
-    color: #999999;
+  .el-table tr.table-2-header th {
+    background-color: @primary-color;
+    color: aliceblue;
+    padding: 5px 0;
   }
-  .el-tag{
+  .el-tag {
     height: 23px;
-    line-height: 23px
+    line-height: 23px;
+    margin: 0 5px;
   }
 }
 </style>

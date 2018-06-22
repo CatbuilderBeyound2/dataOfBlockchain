@@ -1,15 +1,17 @@
 <template>
   <div class="index">
-    <div class="header">
-      <ul>
-        <li>艾瑞集团</li>
-        <li>艾瑞咨询</li>
-        <li>艾瑞数据</li>
-        <li>艾瑞资本</li>
-        <li>艾瑞网</li>
-        <li>艾瑞活动</li>
-        <li>English</li>
-      </ul>
+    <div style="background:#f8f8f8">
+      <div class="header">
+        <ul>
+          <li>艾瑞集团</li>
+          <li>艾瑞咨询</li>
+          <li>艾瑞数据</li>
+          <li>艾瑞资本</li>
+          <li>艾瑞网</li>
+          <li>艾瑞活动</li>
+          <li>English</li>
+        </ul>
+      </div>
     </div>
     <div class="index-search">
       <img src="/static/icon/logo.png" class="logo" alt="">
@@ -83,14 +85,15 @@ body {
     position: relative;
   }
 }
+
 .index {
   width: 100%;
-  max-width: 1000px;
-  min-height: 1000px;
-  margin: auto;
-  // border: 1px solid @border-color;
+  margin: auto; // border: 1px solid @border-color;
+  position: relative;
   .header {
     height: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
     background-color: @fill-color;
     color: @text-color;
     ul {
@@ -101,7 +104,7 @@ body {
         padding: 0 5px;
         border-right: 1px @text-color solid;
         cursor: pointer;
-        .text(12,16);
+        .text(12, 16);
         margin: 8px 0;
       }
       li:nth-last-child(1) {
@@ -114,10 +117,11 @@ body {
   }
   .index-search {
     height: 80px;
-    border: 1px solid @border-color;
+    max-width: 1000px;
+    margin: 0 auto; // border-top: 1px solid @border-color;
     border-bottom: none;
     .logo {
-      .size(100,48);
+      .size(100, 48);
       float: left;
       margin: 15px 0 0 15px;
     }
@@ -126,6 +130,7 @@ body {
       width: 360px;
       float: right;
       margin: 20px 0;
+      border-radius: 4px;
       .el-autocomplete {
         width: 100%;
       }
@@ -136,10 +141,9 @@ body {
     border: 1px solid @border-color;
     border-bottom: none;
     position: relative;
-    .overview {
-    }
+    .overview {}
     .notice-window {
-      .pos(-180,400);
+      .pos(0, 350);
     }
   }
 
@@ -147,7 +151,7 @@ body {
     margin-top: 30px;
     border: 1px solid @border-color;
     border-bottom: none;
-    .box-shadow;
+    .box-shadow
   }
   .footer {
     position: absolute;
@@ -171,7 +175,7 @@ body {
         width: 100px;
         height: 1px;
         background-color: @primary-color;
-        .pos(-100,7);
+        .pos(-100, 7);
       }
       &::after {
         content: '';
@@ -179,7 +183,7 @@ body {
         width: 100px;
         height: 1px;
         background-color: @primary-color;
-        .posr(-100,7);
+        .posr(-100, 7);
       }
     }
   }
