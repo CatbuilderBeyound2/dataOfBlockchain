@@ -145,7 +145,7 @@ body {
     margin-bottom: 20px;
     .overview {}
     .notice-window {
-      .pos(0, 350);
+      .pos(-175, 350);
     }
   }
 
