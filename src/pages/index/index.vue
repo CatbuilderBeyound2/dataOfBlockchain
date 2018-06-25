@@ -2,15 +2,16 @@
   <div class="index">
     <div style="background:#f8f8f8">
       <div class="header">
-        <ul>
-          <li>艾瑞集团</li>
-          <li>艾瑞咨询</li>
-          <li>艾瑞数据</li>
-          <li>艾瑞资本</li>
-          <li>艾瑞网</li>
-          <li>艾瑞活动</li>
-          <li>English</li>
-        </ul>
+        <div class="headerBox">
+          <a href="http://group.iresearch.com.cn/" target="_blank">艾瑞集团</a>|
+          <a target="_blank" href="http://www.iresearch.com.cn/">艾瑞咨询</a>|
+          <a href="http://data.iresearch.com.cn/" target="_blank">艾瑞数据</a>|
+          <a href="http://capital.iresearch.com.cn/" target="_blank">艾瑞资本</a>|
+          <a href="http://www.iresearch.cn/" target="_blank">艾瑞网</a>|
+          <a href="http://events.iresearch.cn/" target="_blank">艾瑞活动</a>|
+          <a href="http://www.iresearchchina.com/" target="_blank">English</a>
+        </div>
+
       </div>
     </div>
     <div class="index-search">
@@ -24,12 +25,12 @@
     <indexTab :activeName="activeName" @tab-change='tabChange'></indexTab>
     <router-view class="router" v-if="!hideRouterView"></router-view>
     <!--<div class="footer">
-      <div class="contact">联系我们&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
-      <div class="phone-num">400-026-2099</div>
-      <div class="email">ask@ireseach.com.cn</div>
-      <div class="copy-right">2002-2018 Copyright© 艾瑞数据</div>
-      <div class="copy-num">啊实打实大苏打</div>
-    </div>-->
+                  <div class="contact">联系我们&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
+                  <div class="phone-num">400-026-2099</div>
+                  <div class="email">ask@ireseach.com.cn</div>
+                  <div class="copy-right">2002-2018 Copyright© 艾瑞数据</div>
+                  <div class="copy-num">啊实打实大苏打</div>
+                </div>-->
   </div>
 </template>
 
@@ -94,23 +95,31 @@ body {
     height: 32px;
     max-width: 1000px;
     margin: 0 auto;
-    background-color: @fill-color;
-    color: @text-color;
-    ul {
-      float: right;
-      li {
+    line-height: 30px;
+    text-align: right;
+    color: #777;
+    background-color: #f8f8f8;
+    .headerBox {
+      max-width: 1000px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-left: auto;
+      margin-right: auto;
+      -webkit-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+      a {
         list-style: none;
-        float: left;
-        padding: 0 5px;
-        border-right: 1px @text-color solid;
+        color: rgb(119, 119, 119);
+        padding: 0 5px; 
         cursor: pointer;
-        .text(12, 16);
+        .text(14, 16);
         margin: 8px 0;
       }
-      li:nth-last-child(1) {
+      a:nth-last-child(1) {
         border: none;
       }
-      li:hover {
+      a:hover {
         color: @primary-color;
       }
     }
@@ -154,9 +163,9 @@ body {
     border: 1px solid @border-color;
     border-bottom: none;
     .box-shadow;
-    max-width:1000px;
-    margin:0 auto;
-    margin-bottom:30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 30px;
   }
   .footer {
     position: absolute;
