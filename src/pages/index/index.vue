@@ -23,13 +23,13 @@
     </div>
     <indexTab :activeName="activeName" @tab-change='tabChange'></indexTab>
     <router-view class="router" v-if="!hideRouterView"></router-view>
-    <div class="footer">
+    <!--<div class="footer">
       <div class="contact">联系我们&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
       <div class="phone-num">400-026-2099</div>
       <div class="email">ask@ireseach.com.cn</div>
       <div class="copy-right">2002-2018 Copyright© 艾瑞数据</div>
       <div class="copy-num">啊实打实大苏打</div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -153,7 +153,10 @@ body {
     margin-top: 30px;
     border: 1px solid @border-color;
     border-bottom: none;
-    .box-shadow
+    .box-shadow;
+    max-width:1000px;
+    margin:0 auto;
+    margin-bottom:30px;
   }
   .footer {
     position: absolute;

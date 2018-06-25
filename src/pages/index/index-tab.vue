@@ -199,6 +199,7 @@ export default {
 .tabs {
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom:30px;
   > .el-tabs > .el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
