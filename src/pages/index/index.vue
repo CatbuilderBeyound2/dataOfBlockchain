@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="index-search">
-      <img src="/static/icon/logo.png" class="logo" alt="">
+      <img src="../../assets/logo.png" class="logo" alt="">
       <search></search>
     </div>
     <div class="overview-wrap">

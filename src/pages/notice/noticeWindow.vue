@@ -11,7 +11,7 @@
         <li>最新公告最新公告</li>
       </ul>
       <div class="collapse-split">
-        <img src="/static/icon/iconfont_down.png" alt="">
+        <img src="../../assets/iconfont_down.png" alt="">
       </div>
       <div class="collapse-button" @click="toggle">
         最新公告
