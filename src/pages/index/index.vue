@@ -16,7 +16,7 @@
     </div>
     <div class="index-search">
       <img src="../../assets/logo.png" class="logo" alt="">
-      <search></search>
+      <search @search='search'></search>
     </div>
     <div class="overview-wrap">
       <overview></overview>
@@ -24,13 +24,6 @@
     </div>
     <indexTab :activeName="activeName" @tab-change='tabChange'></indexTab>
     <router-view class="router" v-if="!hideRouterView"></router-view>
-    <!--<div class="footer">
-                  <div class="contact">联系我们&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
-                  <div class="phone-num">400-026-2099</div>
-                  <div class="email">ask@ireseach.com.cn</div>
-                  <div class="copy-right">2002-2018 Copyright© 艾瑞数据</div>
-                  <div class="copy-num">啊实打实大苏打</div>
-                </div>-->
   </div>
 </template>
 
@@ -62,6 +55,14 @@ export default {
     tabChange(tab) {
       this.$router.push('/');
       this.activeName = tab.name;
+    },
+    search(key) {
+      this.$router.push({
+        path: '/search',
+        query: {
+          q: key,
+        },
+      });
     },
   },
   watch: {
@@ -111,7 +112,7 @@ body {
       a {
         list-style: none;
         color: rgb(119, 119, 119);
-        padding: 0 5px; 
+        padding: 0 5px;
         cursor: pointer;
         .text(14, 16);
         margin: 8px 0;
@@ -152,7 +153,8 @@ body {
     border: 1px solid @border-color;
     position: relative;
     margin-bottom: 20px;
-    .overview {}
+    .overview {
+    }
     .notice-window {
       .pos(-175, 350);
     }

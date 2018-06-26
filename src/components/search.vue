@@ -1,6 +1,7 @@
 <template>
   <div class="searchSelect">
     <el-autocomplete placeholder="搜索您要查看的币种/平台关键字..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" suffix-icon="el-icon-search"></el-autocomplete>
+    <div class="button" @click="search"></div>
     <img class="select__icon-cur" :src="icon">
   </div>
 </template>
@@ -28,8 +29,11 @@ export default {
       },
     },
   },
-  created() { },
+  created() {},
   methods: {
+    search() {
+      this.$emit('search', this.searchKey);
+    },
     querySearch(queryString, cb) {
       let self = this,
         { channels } = self;
@@ -54,7 +58,7 @@ export default {
     id: function(cur) {
       try {
         this.icon = this.channels.find(item => item.id === cur).icon;
-      } catch (err) { }
+      } catch (err) {}
     },
   },
 };
@@ -63,6 +67,13 @@ export default {
 <style lang="less" scoped>
 .searchSelect {
   position: relative;
+  .button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    width: 40px
+  }
 }
 
 .select__icon-cur {

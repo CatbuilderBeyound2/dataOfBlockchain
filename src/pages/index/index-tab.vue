@@ -200,39 +200,39 @@ export default {
   max-width: 1000px;
   margin: 0 auto;
   margin-bottom: 30px;
-  >.el-tabs>.el-tabs__header .el-tabs__nav {
+  > .el-tabs > .el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
-    >div {
+    > div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
   .el-pagination {
     text-align: right;
     margin-top: 20px;
   }
-  .el-tabs--card>.el-tabs__header{
-    border-bottom:none;
+  .el-tabs--card > .el-tabs__header {
+    border-bottom: none;
   }
-  .el-tabs--card>.el-tabs__header .el-tabs__nav{
-    border:none;
+  .el-tabs--card > .el-tabs__header .el-tabs__nav {
+    border: none;
   }
-  .el-tabs--card>.el-tabs__header .el-tabs__item {
+  .el-tabs--card > .el-tabs__header .el-tabs__item {
     height: 20px;
     line-height: 19px;
     margin-right: 10px;
-    border-bottom:none;
-    border-left:none;
-    color:#676767;
+    border-bottom: none;
+    border-left: none;
+    color: #676767;
   }
-  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
-    border: 1px solid #69C72B;
+  .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+    border: 1px solid #69c72b;
     border-radius: 4px;
-    background: #ECFFE1;
-    color: #69C72B
+    background: #ecffe1;
+    color: #69c72b;
   }
 }
 </style>
