@@ -8,13 +8,13 @@
             <el-tag v-for="(tagItem,tagIndex) in scope.row.trade_type" :type="tagMap[tagItem].type" :key='tagIndex'>{{tagMap[tagItem].label}}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column v-if="item.column==='rank'" width="150" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+        <el-table-column v-if="item.column==='ec_start'" width="150" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
-            <el-rate :value="scope.row[item.column]" disabled allow-half text-color="#ff9900">
+            <el-rate allow-half :value="scope.row[item.column]/2" disabled allow-half text-color="#ff9900">
             </el-rate>
           </template>
         </el-table-column>
-        <el-table-column v-if="item.column!=='rank'&&item.column!=='trade_type'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+        <el-table-column v-if="item.column!=='ec_start'&&item.column!=='trade_type'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
             {{scope.row[item.column]}}
           </template>
