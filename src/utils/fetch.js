@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Message, MessageBox } from "element-ui";
 
-const fetch = axios.create({ baseURL: "/api" });
+const fetch = axios.create({ baseURL: "/digitalCash" });
 
 fetch.interceptors.request.use(
   config => {

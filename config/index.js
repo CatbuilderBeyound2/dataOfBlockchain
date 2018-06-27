@@ -31,12 +31,12 @@ module.exports = {
     cssSourceMap: true,
     proxyTable: {
       // mock
-      "/api": {
+      "/digitalCash": {
         target:
           "http://result.eolinker.com/Bh4x9Vh1e07b6729009684829751780ef8dbea036175e02?uri=",
         changeOrigin: true,
         pathRewrite: {
-          "^/api": ""
+          "^/digitalCash": ""
         }
         // logLevel: "debug"
       }
