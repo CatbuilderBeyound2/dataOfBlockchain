@@ -74,6 +74,10 @@ export default {
   .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
+  .el-tabs__item{
+    height: 40px;
+    line-height: 39px;
+  }
 }
 </style>
 
