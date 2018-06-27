@@ -148,7 +148,7 @@ export default {
         })
         .then(res => {
           this.transaction.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['volume', 'volumeNumber', 'rank', 'tradePair'];
+            let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {
@@ -227,7 +227,7 @@ export default {
     border-bottom: none;
     border-left: none;
     color: #676767;
-    font-size:14px;
+    font-size: 14px;
   }
   .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
     border: 1px solid #69c72b;
