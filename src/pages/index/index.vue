@@ -156,7 +156,7 @@ body {
     .overview {
     }
     .notice-window {
-      .pos(-175, 350);
+      .pos(-175, 320);
     }
   }
 

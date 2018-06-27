@@ -227,6 +227,7 @@ export default {
     border-bottom: none;
     border-left: none;
     color: #676767;
+    font-size:14px;
   }
   .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
     border: 1px solid #69c72b;
