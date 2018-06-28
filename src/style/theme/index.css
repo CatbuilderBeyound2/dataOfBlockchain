@@ -1976,6 +1976,7 @@
   white-space: normal;
   word-break: break-all;
   line-height: 23px;
+  text-align: left;
 }
 .el-badge__content,
 .el-progress-bar__inner,

@@ -36,6 +36,9 @@ export default {
     height: 23px;
     width: 100px;
     margin: auto;
+    div canvas {
+      left: -18px !important;
+    }
   }
 }
 </style>

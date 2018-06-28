@@ -126,7 +126,7 @@ export default {
         })
         .then(res => {
           this.quotation.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
+            let sortableArr = ['market_cap', 'price', 'market_num', 'turnover', 'change',''];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {
