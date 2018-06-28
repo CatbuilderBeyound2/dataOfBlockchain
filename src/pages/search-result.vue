@@ -1,5 +1,10 @@
 <template>
   <div class="search-result">
+    <div class="title">搜索结果</div>
+    <search @search='search'></search>
+    <div class="result-count">
+      共{{resultTotalCount}}个结果，{{count.coinName}}个币种，{{count.trade}}个交易所
+    </div>
     <el-tabs :value="active" @tab-click="tabClick" type="border-card">
       <el-tab-pane label="币种" name="coinName">
         <table1 :headerData='tableHeader' @sort-change='sortChange' :tableData='tableData'></table1>
@@ -16,12 +21,14 @@
 <script>
 import table1 from '@/components/table/table1';
 import table2 from '@/components/table/table2';
+import search from '@/components/search';
 import api from '@/api';
 import { insertData2Chart } from './index/tool.js';
 export default {
   components: {
     table1,
     table2,
+    search,
   },
   data() {
     return {
@@ -37,15 +44,52 @@ export default {
         prop: 'ec_turnover',
         order: 'desc',
       },
+      count: {
+        coinName: 0,
+        trade: 0,
+      },
     };
   },
   created() {
     this.seachByTab();
   },
+  computed: {
+    resultTotalCount() {
+      return this.count.coinName + this.count.trade;
+    },
+  },
   methods: {
-    seachByTab() {
+    seachByCoinName(coinName) {
       api
-        .search({
+        .searchByCoinName({
+          params: {
+            name: coinName || this.$route.query.q,
+            type: this.active,
+            orderCloumn: this.sort.prop,
+            orderType: this.sort.order,
+          },
+        })
+        .then(res => {
+          this.tableHeader = res.tableHeader.map(v => {
+            let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
+            if (sortableArr.indexOf(v.column) > -1) {
+              v.sortable = true;
+            } else {
+              v.sortable = false;
+            }
+            return v;
+          });
+          this.tableData = res.tableData.map(v => {
+            v.echarts = insertData2Chart(v.trend);
+            return v;
+          });
+
+          this.total = res.total || 100;
+        });
+    },
+    seachByTrade() {
+      api
+        .searchByTrade({
           params: {
             name: this.$route.query.q,
             type: this.active,
@@ -54,35 +98,27 @@ export default {
           },
         })
         .then(res => {
-          if (this.active === 'coinName') {
-            this.tableHeader = res.tableHeader.map(v => {
-              let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
-              if (sortableArr.indexOf(v.column) > -1) {
-                v.sortable = true;
-              } else {
-                v.sortable = false;
-              }
-              return v;
-            });
-            this.tableData = res.tableData.map(v => {
-              v.echarts = insertData2Chart(v.trend);
-              return v;
-            });
-          } else {
-            this.tableHeader2 = res.tableHeader.map(v => {
-              let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
-              if (sortableArr.indexOf(v.column) > -1) {
-                v.sortable = true;
-              } else {
-                v.sortable = false;
-              }
-              return v;
-            });
-            this.tableData2 = res.tableData;
-          }
+          this.tableHeader2 = res.tableHeader.map(v => {
+            let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
+            if (sortableArr.indexOf(v.column) > -1) {
+              v.sortable = true;
+            } else {
+              v.sortable = false;
+            }
+            return v;
+          });
+          this.tableData2 = res.tableData;
           this.total = res.total || 100;
         });
     },
+    seachByTab() {
+      if (this.active === 'coinName') {
+        this.seachByCoinName();
+      } else {
+        this.seachByTrade();
+      }
+    },
+    getCount() {},
     tabClick(tab) {
       this.active = tab.name;
       this.pageNo = 1;
@@ -97,6 +133,16 @@ export default {
       this.sort.prop = params.prop;
       this.seachByTab();
     },
+    search(key) {
+      this.active = 'coinName';
+      this.pageNo = 1;
+      this.sort = {
+        prop: 'ec_turnover',
+        order: 'desc',
+      };
+      this.seachByCoinName(key);
+      this.getCount();
+    },
   },
 };
 </script>
@@ -104,6 +150,7 @@ export default {
 
 
 <style lang="less">
+@import '~@style/mixins.less';
 @import '~@style/var.less';
 .search-result {
   > .el-tabs > .el-tabs__header .el-tabs__nav {
@@ -123,6 +170,36 @@ export default {
   .el-pagination {
     text-align: right;
     margin-top: 20px;
+  }
+  .el-autocomplete {
+    width: 100%;
+    .el-input__suffix {
+      background-color: @primary-color;
+      color: @fill-color;
+      width: 40px;
+      border-radius: 3px;
+    }
+  }
+  .searchSelect {
+    border-top: 1px @border-color solid;
+    border-bottom: 1px @border-color solid;
+  }
+  .title {
+    .text(18,50,50);
+    font-weight: 600;
+    text-align: left;
+    &::before {
+      content: '·';
+      display: inline-block;
+      .size(30,50);
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+  .result-count {
+    color: #909399;
+    text-align: left;
+    padding:10px 0 20px 20px;
   }
 }
 </style>
