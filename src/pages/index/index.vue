@@ -162,9 +162,9 @@ body {
 
   .router {
     margin-top: 30px;
-    border: 1px solid @border-color;
+    // border: 1px solid @border-color;
     border-bottom: none;
-    .box-shadow;
+    // .box-shadow;
     max-width: 1000px;
     margin: 0 auto;
     margin-bottom: 30px;

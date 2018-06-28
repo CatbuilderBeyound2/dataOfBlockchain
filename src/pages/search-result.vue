@@ -166,14 +166,14 @@ export default {
 @import '~@style/mixins.less';
 @import '~@style/var.less';
 .search-result {
-  > .el-tabs > .el-tabs__header .el-tabs__nav {
+  >.el-tabs>.el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
-    > div {
+    >div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
   .el-tabs__item {
@@ -189,22 +189,27 @@ export default {
     .el-input__suffix {
       background-color: @primary-color;
       color: @fill-color;
-      width: 40px;
-      border-radius: 3px;
+      width: 60px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      right:0;
+      .el-input__icon {
+        font-size: 20px;
+      }
     }
   }
   .searchSelect {
-    border-top: 1px @border-color solid;
-    border-bottom: 1px @border-color solid;
+    border: 1px solid @border-color;
+    border-radius: 4px;
   }
   .title {
-    .text(18,50,50);
+    .text(18, 50, 50);
     font-weight: 600;
     text-align: left;
     &::before {
       content: '·';
       display: inline-block;
-      .size(30,50);
+      .size(30, 50);
       font-size: 20px;
       text-align: center;
     }
