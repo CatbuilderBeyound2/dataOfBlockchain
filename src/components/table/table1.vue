@@ -9,7 +9,12 @@
       <el-table-column v-for="(item ,index) in headerData" :sortable="item.sortable?'custom':false" header-align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
-          <template v-if="item.column!=='trend'">{{scope.row[item.column]}}</template>
+          <template v-else-if="item.column==='change'">
+            <div :class="parseInt(scope.row[item.column])>0?'red':'green'">{{scope.row[item.column]}}</div>
+          </template>
+          <template v-else>
+            {{scope.row[item.column]}}
+          </template>
         </template>
       </el-table-column>
     </el-table>
@@ -21,7 +26,7 @@ import tableMixin from '@/mixins/table';
 export default {
   name: 'table1',
   mixins: [tableMixin],
-  created() { },
+  created() {},
 };
 </script>
 <style lang="less">
@@ -39,6 +44,12 @@ export default {
     div canvas {
       left: -18px !important;
     }
+  }
+  .red{
+    color: #ed2a2a
+  }
+  .green{
+    color: #28a328
   }
 }
 </style>
