@@ -4,5 +4,6 @@ export default {
   getTrade: "/trade/trade", //交易平台
   rankings: "rank/rankings", //排行榜
   searchByCoinName: "/market/search",
-  searchByTrade: "/trade/search"
+  searchByTrade: "/trade/search",
+  searchCount: "market/totalNum"
 };

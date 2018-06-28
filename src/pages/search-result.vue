@@ -52,6 +52,7 @@ export default {
   },
   created() {
     this.seachByTab();
+    this.getCount();
   },
   computed: {
     resultTotalCount() {
@@ -92,7 +93,7 @@ export default {
         .searchByTrade({
           params: {
             name: this.$route.query.q,
-            type: this.active,
+            tradeType: this.active,
             orderCloumn: this.sort.prop,
             orderType: this.sort.order,
           },
@@ -118,7 +119,18 @@ export default {
         this.seachByTrade();
       }
     },
-    getCount() {},
+    getCount() {
+      api
+        .searchCount({
+          params: {
+            tradeType: 0,
+          },
+        })
+        .then(res => {
+          this.count.coinName = res.tablePage.total;
+          this.count.trade = res.tablePage.total1;
+        });
+    },
     tabClick(tab) {
       this.active = tab.name;
       this.pageNo = 1;
@@ -199,7 +211,7 @@ export default {
   .result-count {
     color: #909399;
     text-align: left;
-    padding:10px 0 20px 20px;
+    padding: 10px 0 20px 20px;
   }
 }
 </style>
