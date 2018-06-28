@@ -33,6 +33,10 @@ export default {
       pageNo: 1,
       pageSize: 15,
       total: 0,
+      sort: {
+        prop: 'ec_turnover',
+        order: 'desc',
+      },
     };
   },
   created() {
@@ -45,29 +49,54 @@ export default {
           params: {
             name: this.$route.query.q,
             type: this.active,
-            orderCloumn: '',
-            orderType: '',
+            orderCloumn: this.sort.prop,
+            orderType: this.sort.order,
           },
         })
         .then(res => {
-          this.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
-            if (sortableArr.indexOf(v.column) > -1) {
-              v.sortable = true;
-            } else {
-              v.sortable = false;
-            }
-            return v;
-          });
-          this.tableData = res.tableData.map(v => {
-            v.echarts = insertData2Chart(v.trend);
-            return v;
-          });
+          if (this.active === 'coinName') {
+            this.tableHeader = res.tableHeader.map(v => {
+              let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
+              if (sortableArr.indexOf(v.column) > -1) {
+                v.sortable = true;
+              } else {
+                v.sortable = false;
+              }
+              return v;
+            });
+            this.tableData = res.tableData.map(v => {
+              v.echarts = insertData2Chart(v.trend);
+              return v;
+            });
+          } else {
+            this.tableHeader2 = res.tableHeader.map(v => {
+              let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
+              if (sortableArr.indexOf(v.column) > -1) {
+                v.sortable = true;
+              } else {
+                v.sortable = false;
+              }
+              return v;
+            });
+            this.tableData2 = res.tableData;
+          }
           this.total = res.total || 100;
         });
     },
-    tabClick() {},
-    sortChange() {},
+    tabClick(tab) {
+      this.active = tab.name;
+      this.pageNo = 1;
+      this.seachByTab();
+    },
+    sortChange(params) {
+      if (params.order === 'descending') {
+        this.sort.order = 'desc';
+      } else {
+        this.sort.order = 'asc';
+      }
+      this.sort.prop = params.prop;
+      this.seachByTab();
+    },
   },
 };
 </script>
