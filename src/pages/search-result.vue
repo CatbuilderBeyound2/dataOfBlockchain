@@ -119,11 +119,12 @@ export default {
         this.seachByTrade();
       }
     },
-    getCount() {
+    getCount(key) {
       api
         .searchCount({
           params: {
-            tradeType: 0,
+            type: 'market',
+            name: key,
           },
         })
         .then(res => {
@@ -153,7 +154,7 @@ export default {
         order: 'desc',
       };
       this.seachByCoinName(key);
-      this.getCount();
+      this.getCount(key);
     },
   },
 };
