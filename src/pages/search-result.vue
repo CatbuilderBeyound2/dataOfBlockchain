@@ -60,7 +60,7 @@ export default {
             return v;
           });
           this.tableData = res.tableData.map(v => {
-            v.echarts = insertData2Chart(v.priceGraph);
+            v.echarts = insertData2Chart(v.trend);
             return v;
           });
           this.total = res.total || 100;

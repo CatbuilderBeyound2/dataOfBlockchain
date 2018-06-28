@@ -8,8 +8,8 @@
     <el-table :data="tableData" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
       <el-table-column v-for="(item ,index) in headerData" :sortable="item.sortable?'custom':false" header-align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
-          <chart v-if="item.column==='priceGraph'" :options="scope.row.echarts"></chart>
-          <template v-if="item.column!=='priceGraph'">{{scope.row[item.column]}}</template>
+          <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
+          <template v-if="item.column!=='trend'">{{scope.row[item.column]}}</template>
         </template>
       </el-table-column>
     </el-table>

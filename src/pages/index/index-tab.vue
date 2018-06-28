@@ -58,7 +58,7 @@ export default {
       },
       active: this.$props['activeName'],
       sort: {
-        prop: '',
+        prop: 'ec_turnover',
         order: 'desc',
       },
       pageSize: 15,
@@ -135,7 +135,7 @@ export default {
             return v;
           });
           this.quotation.tableData = res.tableData.map(v => {
-            v.echarts = insertData2Chart(v.priceGraph);
+            v.echarts = insertData2Chart(v.trend);
             return v;
           });
           this.total = res.total || 100;
@@ -176,7 +176,7 @@ export default {
             return v;
           });
           this.rank.tableData = res.tableData.map(v => {
-            v.echarts = insertData2Chart(v.priceGraph);
+            v.echarts = insertData2Chart(v.trend);
             return v;
           });
           this.total = res.total || 100;
