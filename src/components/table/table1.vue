@@ -10,7 +10,7 @@
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
           <template v-else-if="item.column==='change'">
-            <div :class="parseInt(scope.row[item.column])>0?'red':'green'">{{scope.row[item.column]}}</div>
+            <div :class="parseInt(scope.row[item.column])>0?'green':'red'">{{scope.row[item.column]}}</div>
           </template>
           <template v-else>
             {{scope.row[item.column]}}
@@ -46,10 +46,10 @@ export default {
     }
   }
   .red{
-    color: #ed2a2a
+    color: #e40202
   }
   .green{
-    color: #28a328
+    color: #3ba316
   }
 }
 </style>

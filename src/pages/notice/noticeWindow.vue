@@ -14,7 +14,7 @@
         <img src="../../assets/iconfont_down.png" alt="">
       </div>
       <div class="collapse-button" @click="toggle">
-        最新公告
+        <i class="el-icon-document"></i>最新公告
       </div>
     </div>
   </div>
@@ -86,11 +86,16 @@ export default {
     }
   }
   .collapse-button {
-    padding: 5px 50px;
+    padding: 10px 40px;
     box-sizing: content-box;
     border: 1px solid @border-color;
     cursor: pointer;
     border-radius: 5px;
+    font-weight: 700;
+  }
+  .el-icon-document{
+    color:#69c72b;
+    padding-right: 5px;
   }
   .collapse-split {
     width: 100%;
