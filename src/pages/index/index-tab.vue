@@ -18,7 +18,7 @@
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
-      <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' :total="total" small background layout="prev, pager, next">
+      <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' :total="total" small background layout="prev, pager, next,total">
       </el-pagination>
     </el-tabs>
   </div>
@@ -63,7 +63,7 @@ export default {
       },
       pageSize: 15,
       pageNo: 1,
-      total: 100,
+      total: '',
       subTab: '',
     };
   },
@@ -143,7 +143,7 @@ export default {
             v.echarts = insertData2Chart(v.trend);
             return v;
           });
-          this.total = res.total || 100;
+          this.total = res.tablePage.total || 100;
         });
     },
     getTrade() {
@@ -167,7 +167,7 @@ export default {
             return v;
           });
           this.transaction.tableData = res.tableData;
-          this.total = res.total || 100;
+          this.total = res.tablePage.total || 100;
         });
     },
     rankings() {
@@ -194,7 +194,7 @@ export default {
             v.echarts = insertData2Chart(v.trend);
             return v;
           });
-          this.total = res.total || 100;
+          this.total = res.tablePage.total || 100;
         });
     },
     sortChange(params) {

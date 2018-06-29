@@ -32,25 +32,25 @@ module.exports = {
     proxyTable: {
       // mock
 
+      // "/digitalCash": {
+      //   target:
+      //     "http://result.eolinker.com/Bh4x9Vh1e07b6729009684829751780ef8dbea036175e02?uri=",
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     "^/digitalCash": ""
+      //   },
+      //   logLevel: "debug"
+      // }
+      // 线上
+
       "/digitalCash": {
-        target:
-          "http://result.eolinker.com/Bh4x9Vh1e07b6729009684829751780ef8dbea036175e02?uri=",
+        target: "http://113.200.91.62:8079",
         changeOrigin: true,
         pathRewrite: {
-          "^/digitalCash": ""
+          "^/digitalCash": "/digitalCash"
         },
         logLevel: "debug"
       }
-      // 线上
-
-      // '/digitalCash': {
-      //   target: 'http://113.200.91.62:8079',
-      //   changeOrigin: true,
-      //   pathRewrite: {
-      //     '^/digitalCash': '/digitalCash',
-      //   },
-      //   logLevel: "debug"
-      // },
     }
   },
 
