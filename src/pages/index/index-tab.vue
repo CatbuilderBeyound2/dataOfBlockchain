@@ -29,7 +29,7 @@ import table2 from '@/components/table/table2';
 import tabs from '@/mixins/tabs';
 import api from '@/api';
 import { insertData2Chart, subTabsMap } from './tool.js';
-import { deleteInvalidKey } from '@/utils/utils.js';
+import { deleteInvalidKey, addRowNo } from '@/utils/utils.js';
 export default {
   name: 'indexTab',
   components: {
@@ -125,8 +125,13 @@ export default {
           params: this.collectingParams(),
         })
         .then(res => {
+          addRowNo({
+            tableHeader: res.tableHeader,
+            tableData: res.tableData,
+            base: (this.pageNo - 1) * this.pageSize,
+          });
           this.quotation.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['market_cap', 'price', 'market_num', 'turnover', 'change',''];
+            let sortableArr = ['market_cap', 'price', 'market_num', 'turnover', 'change', ''];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {
@@ -147,6 +152,11 @@ export default {
           params: this.collectingParams(),
         })
         .then(res => {
+          addRowNo({
+            tableHeader: res.tableHeader,
+            tableData: res.tableData,
+            base: (this.pageNo - 1) * this.pageSize,
+          });
           this.transaction.tableHeader = res.tableHeader.map(v => {
             let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
             if (sortableArr.indexOf(v.column) > -1) {
@@ -166,6 +176,11 @@ export default {
           params: this.collectingParams(),
         })
         .then(res => {
+          addRowNo({
+            tableHeader: res.tableHeader,
+            tableData: res.tableData,
+            base: (this.pageNo - 1) * this.pageSize,
+          });
           this.rank.tableHeader = res.tableHeader.map(v => {
             let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
             if (sortableArr.indexOf(v.column) > -1) {

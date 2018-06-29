@@ -6,3 +6,13 @@ export const deleteInvalidKey = data => {
     return acc;
   }, {});
 };
+
+export const addRowNo = opt => {
+  opt.tableHeader.unshift({
+    column: "index",
+    columnName: "序号"
+  });
+  opt.tableData.forEach((v, i) => {
+    v.index = opt.base + i + 1;
+  });
+};

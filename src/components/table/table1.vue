@@ -6,7 +6,7 @@
 <template>
   <div class="table-1">
     <el-table :data="tableData" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
-      <el-table-column v-for="(item ,index) in headerData" :sortable="item.sortable?'custom':false" header-align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
+      <el-table-column v-for="(item ,index) in headerData" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
           <template v-else-if="item.column==='change'">
@@ -45,11 +45,11 @@ export default {
       left: -18px !important;
     }
   }
-  .red{
-    color: #e40202
+  .red {
+    color: #e40202;
   }
-  .green{
-    color: #3ba316
+  .green {
+    color: #3ba316;
   }
 }
 </style>
