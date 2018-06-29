@@ -22,7 +22,35 @@ export default {
   methods: {
     fetchData() {
       api.marketSummary({ method: 'get' }).then(res => {
-        this.overview = res.tableData;
+        let temp = [
+          {
+            name: '虚拟币',
+            key: 'currencies',
+          },
+          {
+            name: '代币',
+            key: 'assets',
+          },
+          {
+            name: '交易平台',
+            key: 'exchange',
+          },
+          {
+            name: '总市值(亿)',
+            key: 'total_cap',
+          },
+          {
+            name: '24小时成交量(亿)',
+            key: 'total_vol',
+          },
+        ];
+        this.overview = temp.reduce((acc, { name, key }) => {
+          acc.push({
+            name,
+            value: +res.tableData[0][key].replace(/[^0-9]/gi, ''),
+          });
+          return acc;
+        }, []);
       });
     },
   },
