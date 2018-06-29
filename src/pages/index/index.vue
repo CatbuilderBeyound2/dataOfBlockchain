@@ -126,9 +126,8 @@ body {
     }
   }
   .index-search {
-    height: 80px;
-    max-width: 1000px;
-    margin: 0 auto; // border-top: 1px solid @border-color;
+    height: 80px; // max-width: 1000px;
+    margin: 0 20px; // border-top: 1px solid @border-color;
     border-bottom: none;
     .logo {
       .size(100, 48);
@@ -137,7 +136,7 @@ body {
     }
     .searchSelect {
       border: 1px solid @border-color;
-      width: 360px;
+      width: 300px;
       float: right;
       margin: 20px 0;
       border-radius: 4px;
@@ -149,24 +148,23 @@ body {
   .overview-wrap {
     padding: 30px 0;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 20px;
     border: 1px solid @border-color;
     position: relative;
     margin-bottom: 20px;
-    .overview {
-    }
+    .overview {}
     .notice-window {
-      .pos(-175, 320);
+      position: absolute;
+      right: -175px;
+      top: 320px;
     }
   }
 
   .router {
-    margin-top: 30px;
-    // border: 1px solid @border-color;
-    border-bottom: none;
-    // .box-shadow;
+    margin-top: 30px; // border: 1px solid @border-color;
+    border-bottom: none; // .box-shadow;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 20px;
     margin-bottom: 30px;
   }
   .footer {

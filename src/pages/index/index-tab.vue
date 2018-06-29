@@ -213,8 +213,8 @@ export default {
 @import '~@style/var.less';
 .tabs {
   max-width: 1000px;
-  margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 0 20px;
+  margin-bottom: 20px;
   > .el-tabs > .el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
@@ -225,9 +225,16 @@ export default {
   .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
+
+  .el-tabs--border-card>.el-tabs__content{
+    padding:0px;
+  }
   .el-pagination {
     text-align: right;
-    margin-top: 20px;
+    margin: 20px 0px;
+  }
+  #pane-quotation,#pane-transaction,#pane-rank{
+    padding:15px;
   }
   .el-tabs--card > .el-tabs__header {
     border-bottom: none;
