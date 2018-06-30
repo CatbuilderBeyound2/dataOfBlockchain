@@ -155,8 +155,9 @@ body {
     .overview {}
     .notice-window {
       position: absolute;
-      right: -175px;
+      right: -320px;
       top: 320px;
+      width:300px;
     }
   }
 

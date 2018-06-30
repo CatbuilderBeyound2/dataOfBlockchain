@@ -35,13 +35,14 @@ export const insertData2Chart = data => {
 export const subTabsMap = {
   rank: [
     { label: "涨幅排行榜", name: "zhuangfu" },
+    { label: "跌幅排行榜", name: "diefu" },
     { label: "24H成交额排行", name: "24H" },
     { label: "市值排行", name: "shizhi" }
   ],
   transaction: [
     { label: "所有", name: "all" },
-    { label: "期货", name: "qihuo" },
     { label: "现货", name: "xianhuo" },
+    { label: "期货", name: "qihuo" },
     { label: "法币", name: "fabi" }
   ]
 };

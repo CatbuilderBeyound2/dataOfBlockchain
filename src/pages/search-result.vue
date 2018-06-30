@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      active: 'coinName',
+      active: 'market',
       tableHeader: [],
       tableData: [],
       tableHeader2: [],
@@ -41,7 +41,7 @@ export default {
       pageSize: 15,
       total: 0,
       sort: {
-        prop: 'ec_turnover',
+        prop: 'marketCap',
         order: 'desc',
       },
       count: {
@@ -66,8 +66,10 @@ export default {
           params: {
             name: coinName || this.$route.query.q,
             type: this.active,
-            orderCloumn: this.sort.prop,
+            columnName: this.sort.prop,
             orderType: this.sort.order,
+            pageNo: this.pageNo,
+            pageSize: this.pageSize,
           },
         })
         .then(res => {
@@ -85,7 +87,7 @@ export default {
             return v;
           });
 
-          this.total = res.total || 100;
+         this.total = res.tablePage.total || 100;
         });
     },
     seachByTrade() {
@@ -109,7 +111,7 @@ export default {
             return v;
           });
           this.tableData2 = res.tableData;
-          this.total = res.total || 100;
+          this.total = res.tablePage.total || 100;
         });
     },
     seachByTab() {
@@ -192,7 +194,7 @@ export default {
       width: 60px;
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px;
-      right:0;
+      right: 0;
       .el-input__icon {
         font-size: 20px;
       }
