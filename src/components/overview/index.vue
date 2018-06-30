@@ -38,16 +38,19 @@ export default {
           {
             name: '总市值(亿)',
             key: 'total_cap',
+            dec: 2, //精确位数
           },
           {
             name: '24小时成交量(亿)',
             key: 'total_vol',
+            dec: 2,
           },
         ];
-        this.overview = temp.reduce((acc, { name, key }) => {
+        this.overview = temp.reduce((acc, { name, key, dec }) => {
           acc.push({
             name,
-            value: parseFloat(res.tableData[0][key].replace(/[^0-9]/gi, '')),
+            value: parseFloat(res.tableData[0][key].match(/([0-9]|\.)/gi, '').join('')),
+            dec,
           });
           return acc;
         }, []);

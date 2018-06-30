@@ -7,7 +7,7 @@
           {{detail.name}}
         </div>
         <div class="detail-count">
-          <countTo :startVal='0' :endVal='detail.value' :duration='3000'></countTo>
+          <countTo :startVal='0' :endVal='detail.value' :decimals='detail.dec' :duration='3000'></countTo>
           <!-- <span class="count-unit">{{detail.count.unit}}</span> -->
         </div>
         <!-- <div :class="`detail-trend ${detail.trendStatus===1?'up':'down'}`">
