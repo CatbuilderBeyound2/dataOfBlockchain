@@ -5,5 +5,6 @@ export default {
   rankings: "rank/rankings", //排行榜
   searchByCoinName: "/market/search",
   searchByTrade: "/trade/search",
-  searchCount: "/market/totalNum"
+  searchCount: "/market/totalNum",
+  notice: "market/notice"
 };

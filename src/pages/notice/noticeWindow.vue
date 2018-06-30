@@ -1,41 +1,52 @@
 <template>
   <div class="notice-window">
-    <div class="collapse" :class="{isShow:!isShow}">
+    <div class="collapse">
       <ul class="collapse-content">
         <div class="collapse-title" @click="goto">各大交易所最新公告</div>
-        <li>最新公告最新公告</li>
-        <li>最新公告最新公告</li>
-        <li>最新公告最新公告</li>
-        <li>最新公告最新公告</li>
-        <li>最新公告最新公告</li>
-        <li>最新公告最新公告</li>
+        <vue-swimlane :words="wordsArray" :circular="false" :rows="8" :scale=".4" :transitionDuration='1000' :pauseOnHover="true" @item-click='jump'></vue-swimlane>
       </ul>
       <div class="collapse-split">
         <img src="../../assets/iconfont_down.png" alt="">
       </div>
-      <div class="collapse-button" @click="toggle">
+      <div class="collapse-button">
         <i class="el-icon-document"></i>最新公告
       </div>
     </div>
   </div>
 </template>
 <script>
+import vueSwimlane from '@/components/text-scroll';
+import api from '@/api';
 export default {
   name: 'noticeWindow',
+  components: {
+    vueSwimlane,
+  },
   data() {
     return {
-      isShow: false
+      isShow: false,
+      wordsArray: [],
     };
   },
+  created() {
+    api.notice().then(res => {
+      this.wordsArray = res.tableData.map(v => {
+        v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
+          v.title
+        }</span><span style='color:#999999'>${v.time}</span>`;
+
+        return v;
+      });
+    });
+  },
   methods: {
-    toggle() {
-      this.isShow = !this.isShow;
-    },
     goto() {
       this.$router.push('/notice');
-      this.toggle();
-    }
-  }
+    },
+    jump(word) {
+      window.open(word.origin_url);
+    },
+  },
 };
 </script>
 
@@ -47,13 +58,13 @@ export default {
   .collapse-content {
     list-style: none;
     .middle;
-    top: -92px;
+    top: -97px;
     width: 100%;
     border: 1px solid @border-color;
     border-bottom: none;
     transition: all 1s;
     overflow: hidden;
-    height: 194px;
+    height: 210px;
     border-radius: 5px;
     li {
       margin-top: 10px;
@@ -93,8 +104,8 @@ export default {
     border-radius: 5px;
     font-weight: 700;
   }
-  .el-icon-document{
-    color:#69c72b;
+  .el-icon-document {
+    color: #69c72b;
     padding-right: 5px;
   }
   .collapse-split {
