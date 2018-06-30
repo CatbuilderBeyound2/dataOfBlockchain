@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      active: 'market',
+      active: 'coinName',
       tableHeader: [],
       tableData: [],
       tableHeader2: [],
@@ -41,7 +41,7 @@ export default {
       pageSize: 15,
       total: 0,
       sort: {
-        prop: 'marketCap',
+        prop: 'ec_turnover',
         order: 'desc',
       },
       count: {
@@ -87,7 +87,7 @@ export default {
             return v;
           });
 
-         this.total = res.tablePage.total || 100;
+          this.total = res.tablePage.total || 100;
         });
     },
     seachByTrade() {
@@ -126,7 +126,7 @@ export default {
         .searchCount({
           params: {
             type: 'market',
-            name: key,
+            name: key || this.$route.query.q,
           },
         })
         .then(res => {
@@ -156,6 +156,7 @@ export default {
         order: 'desc',
       };
       this.seachByCoinName(key);
+      console.log(1111);
       this.getCount(key);
     },
   },
@@ -168,14 +169,14 @@ export default {
 @import '~@style/mixins.less';
 @import '~@style/var.less';
 .search-result {
-  >.el-tabs>.el-tabs__header .el-tabs__nav {
+  > .el-tabs > .el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
-    >div {
+    > div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
   .el-tabs__item {

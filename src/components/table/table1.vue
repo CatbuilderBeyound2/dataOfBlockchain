@@ -18,14 +18,19 @@
         </template>
       </el-table-column>
     </el-table>
+    <model v-if='modelShow'></model>
   </div>
 </template>
 
 <script>
 import tableMixin from '@/mixins/table';
+import model from '../detail-model';
 export default {
   name: 'table1',
   mixins: [tableMixin],
+  components: {
+    model,
+  },
   created() {},
 };
 </script>
@@ -36,6 +41,9 @@ export default {
     background-color: @primary-color;
     color: aliceblue;
     padding: 5px 0;
+  }
+  .el-table__row {
+    cursor: pointer;
   }
   .echarts {
     height: 23px;
