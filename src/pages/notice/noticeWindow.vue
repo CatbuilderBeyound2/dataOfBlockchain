@@ -17,6 +17,7 @@
 <script>
 import vueSwimlane from '@/components/text-scroll';
 import api from '@/api';
+import { repeatArr } from '@/utils/utils';
 export default {
   name: 'noticeWindow',
   components: {
@@ -30,13 +31,16 @@ export default {
   },
   created() {
     api.notice().then(res => {
-      this.wordsArray = res.tableData.map(v => {
-        v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
-          v.title
-        }</span><span style='color:#999999'>${v.time}</span>`;
+      this.wordsArray = repeatArr(
+        res.tableData.map(v => {
+          v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
+            v.title
+          }</span><span style='color:#999999'>${v.time}</span>`;
 
-        return v;
-      });
+          return v;
+        }),
+        20
+      );
     });
   },
   methods: {
