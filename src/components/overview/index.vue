@@ -47,7 +47,7 @@ export default {
         this.overview = temp.reduce((acc, { name, key }) => {
           acc.push({
             name,
-            value: +res.tableData[0][key].replace(/[^0-9]/gi, ''),
+            value: parseFloat(res.tableData[0][key].replace(/[^0-9]/gi, '')),
           });
           return acc;
         }, []);

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import bus from '@/utils/bus';
 export default {
   name: 'searchSelect',
   data() {
@@ -29,7 +30,11 @@ export default {
       },
     },
   },
-  created() {},
+  created() {
+    bus.$on('clear-search', () => {
+      this.searchKey = '';
+    });
+  },
   methods: {
     search() {
       this.$emit('search', this.searchKey);
@@ -72,7 +77,7 @@ export default {
     right: 0;
     top: 0;
     height: 40px;
-    width: 40px
+    width: 40px;
   }
 }
 

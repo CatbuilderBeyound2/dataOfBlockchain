@@ -16,7 +16,7 @@
     </div>
     <div class="index-search">
       <img src="../../assets/logo.png" class="logo" alt="">
-      <search @search='search'></search>
+      <search @search='search' v-if='!hideSearch'></search>
     </div>
     <div class="overview-wrap">
       <overview></overview>
@@ -32,6 +32,7 @@ import overview from '@/components/overview';
 import indexTab from './index-tab';
 import search from '@/components/search';
 import noticeWindow from '../notice/noticeWindow';
+import bus from '@/utils/bus';
 export default {
   components: {
     overview,
@@ -49,12 +50,15 @@ export default {
     return {
       activeName: 'quotation',
       hideRouterView: true,
+      hideSearch: false,
     };
   },
   methods: {
     tabChange(tab) {
       this.$router.push('/');
       this.activeName = tab.name;
+      this.hideSearch = false;
+      bus.$emit('clear-search')
     },
     search(key) {
       this.$router.push({
@@ -63,6 +67,7 @@ export default {
           q: key,
         },
       });
+      this.hideSearch = true;
     },
   },
   watch: {
@@ -152,12 +157,13 @@ body {
     border: 1px solid @border-color;
     position: relative;
     margin-bottom: 20px;
-    .overview {}
+    .overview {
+    }
     .notice-window {
       position: absolute;
       right: -320px;
       top: 320px;
-      width:300px;
+      width: 300px;
     }
   }
 
