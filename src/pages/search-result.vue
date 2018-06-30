@@ -95,8 +95,8 @@ export default {
         .searchByTrade({
           params: {
             name: this.$route.query.q,
-            tradeType: this.active,
-            orderCloumn: this.sort.prop,
+            type: this.active,
+            columnName: this.sort.prop,
             orderType: this.sort.order,
           },
         })

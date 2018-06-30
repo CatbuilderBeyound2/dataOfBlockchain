@@ -99,14 +99,14 @@ body {
   position: relative;
   .header {
     height: 32px;
-    max-width: 1000px;
+    // max-width: 1000px;
     margin: 0 auto;
     line-height: 30px;
     text-align: right;
     color: #777;
     background-color: #f8f8f8;
     .headerBox {
-      max-width: 1000px;
+      // max-width: 1000px;
       padding-left: 15px;
       padding-right: 15px;
       margin-left: auto;

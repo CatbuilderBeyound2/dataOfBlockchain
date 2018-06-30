@@ -4,7 +4,7 @@
       <el-tab-pane label="行情数据" name="quotation">
         <table1 v-if="'quotation'===active" :headerData='quotation.tableHeader' @sort-change='sortChange' :tableData='quotation.tableData'></table1>
       </el-tab-pane>
-      <el-tab-pane label="交易大厅" name="transaction">
+      <el-tab-pane label="交易平台" name="transaction">
         <el-tabs type="card" :value="subTab" @tab-click="subTabClick">
           <el-tab-pane v-for="(item,index) in subTabs" :label="item.label" :name="item.name" :key="index">
             <table2 v-if="'transaction'===active" :headerData='transaction.tableHeader' :tableData='transaction.tableData' @sort-change='sortChange'></table2>
