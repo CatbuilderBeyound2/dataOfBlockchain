@@ -3,7 +3,7 @@
     <div class="collapse">
       <ul class="collapse-content">
         <div class="collapse-title" @click="goto">各大交易所最新公告</div>
-        <vue-swimlane :words="wordsArray" :circular="false" :rows="8" :scale=".4" :transitionDuration='1000' :pauseOnHover="true" @item-click='jump'></vue-swimlane>
+        <vue-swimlane :words="wordsArray" :circular="false" :rows="8" :scale=".4" :transitionDuration='1000' :transitionDelay='.1' :pauseOnHover="true" @item-click='jump'></vue-swimlane>
       </ul>
       <div class="collapse-split">
         <img src="../../assets/iconfont_down.png" alt="">
@@ -30,18 +30,25 @@ export default {
     };
   },
   created() {
-    api.notice().then(res => {
-      this.wordsArray = repeatArr(
-        res.tableData.map(v => {
-          v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
-            v.title
-          }</span><span style='color:#999999'>${v.time}</span>`;
+    api
+      .notice({
+        params: {
+          pageNo: 1,
+          pageSize: 15,
+        },
+      })
+      .then(res => {
+        this.wordsArray = repeatArr(
+          res.tableData.map(v => {
+            v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
+              v.title
+            }</span><span style='color:#999999'>${v.time}</span>`;
 
-          return v;
-        }),
-        20
-      );
-    });
+            return v;
+          }),
+          20
+        );
+      });
   },
   methods: {
     goto() {

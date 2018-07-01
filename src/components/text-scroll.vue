@@ -1,11 +1,11 @@
 // 基于vue-swimlane 魔改
 
 <template>
-    <div class="vue-swimlane" :style="listParentStyle" @mouseenter="throttleToggleAnimation" @mouseleave="throttleToggleAnimation">
-        <ul :style="listStyle">
-            <li :style="itemStyle" v-for="(word,index) in words" @click='wordClick(word)' :key="index" v-html="word.title"></li>
-        </ul>
-    </div>
+  <div class="vue-swimlane" :style="listParentStyle" @mouseenter="throttleToggleAnimation" @mouseleave="throttleToggleAnimation">
+    <ul :style="listStyle">
+      <li :style="itemStyle" v-for="(word,index) in words" @click='wordClick(word)' :key="index" v-html="word.title"></li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -88,6 +88,10 @@ export default {
       return this.itemHeight * this.words.length;
     },
     listStyle() {
+      if (this.resetOnNext) {
+        return ` transform: translateY(0px)!important;`;
+      }
+
       return `-webkit-transition: transform ${this.transitionDurationNormalized}ms ${this.transition}!important;
             -moz-transition: transform  ${this.transitionDurationNormalized}ms ${this.transition}!important;
             transition: transform  ${this.transitionDurationNormalized}ms ${this.transition}!important;
@@ -148,7 +152,8 @@ export default {
 };
 </script>
 
-<style>
+
+<style lang="less">
 .vue-swimlane {
   width: 100%;
   overflow: hidden;
@@ -167,5 +172,8 @@ export default {
   padding: 0;
   margin: 0;
   cursor: pointer;
+  &:hover {
+    color: #69c72b;
+  }
 }
 </style>
