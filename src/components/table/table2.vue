@@ -21,14 +21,21 @@
         </el-table-column>
       </template>
     </el-table>
+    <model v-if='modelShow' :detail='detail' @hide='hideDetail'></model>
+
   </div>
 </template>
 
 <script>
 import tableMixin from '@/mixins/table';
+import model from '../detail-model';
+import api from '@/api';
 export default {
   name: 'table2',
   mixins: [tableMixin],
+  components: {
+    model,
+  },
   data() {
     return {
       tagMap: {
@@ -47,6 +54,35 @@ export default {
       },
     };
   },
+  methods: {
+    rowClick(params) {
+      this.getDetail(params);
+      console.log(params);
+    },
+    getDetail(params) {
+      api
+        .detailTrade({
+          params: {
+            name: params.coin_name,
+          },
+        })
+        .then(res => {
+          let { ec_name, price, change } = params;
+          this.detail = Object.assign(
+            {},
+            {
+              name: coin_name,
+              price,
+              change,
+              label: '价格',
+              type: 2,
+            },
+            res.tableData[0]
+          );
+          this.modelShow = true;
+        });
+    },
+  },
 };
 </script>
 <style lang="less">
@@ -56,6 +92,9 @@ export default {
     background-color: @primary-color;
     color: aliceblue;
     padding: 5px 0;
+  }
+  .el-table__row {
+    cursor: pointer;
   }
   .el-tag {
     height: 23px;

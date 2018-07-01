@@ -6,5 +6,7 @@ export default {
   searchByCoinName: "/market/search",
   searchByTrade: "/trade/search",
   searchCount: "/market/totalNum",
-  notice: "market/notice"
+  notice: "market/notice",
+  detailMarket: "/marketData/marketMess",
+  detailTrade: "/trade/tradeMess"
 };

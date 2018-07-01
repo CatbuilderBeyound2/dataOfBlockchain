@@ -16,13 +16,13 @@ export default {
   data() {
     return {
       sortOrders: ["descending", "ascending"],
-      modelShow: false
+      modelShow: false,
+      detail: {}
     };
   },
   methods: {
-    rowClick(params) {
-      this.modelShow = true;
-      console.log(params);
+    hideDetail() {
+      this.modelShow = false;
     },
     sortChange(params) {
       console.log(params);

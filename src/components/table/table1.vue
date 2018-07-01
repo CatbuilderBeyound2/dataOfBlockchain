@@ -18,13 +18,14 @@
         </template>
       </el-table-column>
     </el-table>
-    <model v-if='modelShow'></model>
+    <model v-if='modelShow' :detail='detail' @hide='hideDetail'></model>
   </div>
 </template>
 
 <script>
 import tableMixin from '@/mixins/table';
 import model from '../detail-model';
+import api from '@/api';
 export default {
   name: 'table1',
   mixins: [tableMixin],
@@ -32,6 +33,34 @@ export default {
     model,
   },
   created() {},
+  methods: {
+    rowClick(params) {
+      this.getDetail(params);
+    },
+    getDetail(params) {
+      api
+        .detailMarket({
+          params: {
+            name: params.coin_name,
+          },
+        })
+        .then(res => {
+          let { coin_name, price, change } = params;
+          this.detail = Object.assign(
+            {},
+            {
+              name: coin_name,
+              price,
+              change,
+              label: '价格',
+              type: 1,
+            },
+            res.tableData[0]
+          );
+          this.modelShow = true;
+        });
+    },
+  },
 };
 </script>
 <style lang="less">
