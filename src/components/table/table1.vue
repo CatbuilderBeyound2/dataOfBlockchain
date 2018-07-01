@@ -6,11 +6,15 @@
 <template>
   <div class="table-1">
     <el-table :data="tableData" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
-      <el-table-column v-for="(item ,index) in headerData" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
+      <el-table-column v-for="(item ,index) in headerData" :min-width="item.column==='coin_name'?150:0" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
           <template v-else-if="item.column==='change'">
             <div :class="parseInt(scope.row[item.column])>0?'green':'red'">{{scope.row[item.column]}}</div>
+          </template>
+          <template v-else-if="item.column==='coin_name'">
+            <img class="logo" :src="scope.row.img_url" alt="">
+            <div class="name">{{scope.row[item.column]}}</div>
           </template>
           <template v-else>
             {{scope.row[item.column]}}
@@ -87,6 +91,14 @@ export default {
   }
   .green {
     color: #3ba316;
+  }
+  .cell {
+    display: flex;
+  }
+  .logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
   }
 }
 </style>

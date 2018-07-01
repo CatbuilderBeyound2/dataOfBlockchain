@@ -3,6 +3,12 @@
   <div class="table-2">
     <el-table :data="tableData" stripe header-row-class-name="table-2-header" @row-click="rowClick" @sort-change="sortChange">
       <template v-for="(item ,index) in headerData">
+        <el-table-column v-if="item.column==='ec_name'" width="150" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+          <template slot-scope="scope">
+            <img class="logo" :src="scope.row.img_url" alt="">
+            <div class="name">{{scope.row[item.column]}}</div>
+          </template>
+        </el-table-column>
         <el-table-column v-if="item.column==='trade_type'" width="200" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
             <el-tag v-for="(tagItem,tagIndex) in scope.row.trade_type" :type="tagMap[tagItem].type" :key='tagIndex'>{{tagMap[tagItem].label}}</el-tag>
@@ -14,7 +20,7 @@
             </el-rate>
           </template>
         </el-table-column>
-        <el-table-column v-if="item.column!=='ec_start'&&item.column!=='trade_type'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+        <el-table-column v-if="item.column!=='ec_start'&&item.column!=='trade_type'&&item.column!=='ec_name'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
             {{scope.row[item.column]}}
           </template>
@@ -100,6 +106,14 @@ export default {
     height: 23px;
     line-height: 23px;
     margin: 0 5px;
+  }
+  .cell {
+    display: flex;
+  }
+  .logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
   }
 }
 </style>
