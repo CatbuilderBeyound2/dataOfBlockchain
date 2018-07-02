@@ -155,8 +155,8 @@ export default {
         prop: 'ec_turnover',
         order: 'desc',
       };
+      this.$route.query.q = key;
       this.seachByCoinName(key);
-      console.log(1111);
       this.getCount(key);
     },
   },
