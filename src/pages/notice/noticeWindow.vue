@@ -88,10 +88,9 @@ export default {
       }
     }
     .collapse-title {
-      border-bottom: 1px solid @border-color;
       padding: 5px 0;
       position: relative;
-      .text(12,14);
+      .text(16,25);
       box-sizing: content-box;
       cursor: pointer;
       font-weight: 600;
@@ -100,10 +99,10 @@ export default {
       }
       &::after {
         content: '';
-        .size(10,10);
+        .size(16,20);
         .posr(6,6);
         transform: rotateZ(90deg);
-        .bgi('/static/icon/iconfont_down.png');
+        .bgi('../assets/iconfont_down.png');
       }
     }
   }

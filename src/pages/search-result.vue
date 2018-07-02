@@ -87,7 +87,7 @@ export default {
             return v;
           });
 
-          this.total = res.tablePage.total || 100;
+          this.total = res.tablePage.total;
         });
     },
     seachByTrade() {
@@ -111,7 +111,7 @@ export default {
             return v;
           });
           this.tableData2 = res.tableData;
-          this.total = res.tablePage.total || 100;
+          this.total = res.tablePage.total;
         });
     },
     seachByTab() {

@@ -3,7 +3,7 @@
   <div class="table-2">
     <el-table :data="tableData" stripe header-row-class-name="table-2-header" @row-click="rowClick" @sort-change="sortChange">
       <template v-for="(item ,index) in headerData">
-        <el-table-column v-if="item.column==='ec_name'" width="150" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+        <el-table-column v-if="item.column==='ec_name'" width="120" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
             <img class="logo" :src="scope.row.img_url" alt="">
             <div class="name">{{scope.row[item.column]}}</div>

@@ -20,7 +20,7 @@
       </el-tab-pane>
       <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' :total="total" small background layout="prev, pager, next,total">
       </el-pagination>
-      <p class="remarks">备注：* 不可挖矿 ** 有预挖矿</p>
+      <!--<p class="remarks">备注：* 不可挖矿 ** 有预挖矿</p>-->
     </el-tabs>
   </div>
 </template>
