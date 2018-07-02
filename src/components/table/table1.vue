@@ -10,7 +10,7 @@
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
           <template v-else-if="item.column==='change'">
-            <div :class="parseInt(scope.row[item.column])<0?'red':'green'">{{scope.row[item.column]}}</div>
+            <div :class="parseFloat(scope.row[item.column])<0?'red':'green'">{{scope.row[item.column]}}</div>
           </template>
           <template v-else-if="item.column==='coin_name'">
             <img class="logo" :src="scope.row.img_url" alt="">
