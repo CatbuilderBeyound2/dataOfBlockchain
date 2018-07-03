@@ -9766,7 +9766,8 @@
   top: 0;
   -webkit-transition: all 0.3s;
   height: 100%;
-  color: #c0c4cc;
+  color: #69c72b;
+  font-size: 20px;
   text-align: center;
 }
 .el-input__inner::-webkit-input-placeholder {

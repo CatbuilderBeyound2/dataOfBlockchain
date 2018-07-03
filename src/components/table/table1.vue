@@ -12,7 +12,7 @@
           <template v-else-if="item.column==='change'">
             <div :class="parseFloat(scope.row[item.column])<0?'red':'green'">{{(scope.row[item.column])+'%'}}</div>
           </template>
-           <template v-else-if="item.column==='market_cap'" width="130">
+           <template v-else-if="item.column==='market_cap'">
              {{(scope.row[item.column])===0?'-':'¥'+(scope.row[item.column])}}
           </template>
           <template v-else-if="item.column==='price'" >
