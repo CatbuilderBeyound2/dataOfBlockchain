@@ -59,7 +59,7 @@ export default {
       },
       active: this.$props['activeName'],
       sort: {
-        prop: 'ec_turnover',
+        prop: 'rank',
         order: 'desc',
       },
       pageSize: 15,
