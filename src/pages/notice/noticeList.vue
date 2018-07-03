@@ -2,7 +2,7 @@
   <div class="notice-list">
     <div class="title">交易平台交易列表</div>
     <el-table :data="tableData1" style="width: 100%" @row-click='rowClick'>
-      <el-table-column width="100">
+      <el-table-column width="150">
         <template slot-scope="scope">
           <span class="green">{{scope.row['coin_name']}}</span>
         </template>

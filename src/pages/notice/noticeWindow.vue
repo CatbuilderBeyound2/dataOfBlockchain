@@ -5,12 +5,6 @@
         <div class="collapse-title" @click="goto">各大交易所最新公告</div>
         <vue-swimlane :words="wordsArray" :circular="false" :rows="8" :scale=".4" :transitionDuration='1000' :transitionDelay='.1' :pauseOnHover="true" @item-click='jump'></vue-swimlane>
       </ul>
-      <div class="collapse-split">
-        <img src="../../assets/iconfont_down.png" alt="">
-      </div>
-      <div class="collapse-button">
-        <i class="el-icon-document"></i>最新公告
-      </div>
     </div>
   </div>
 </template>
@@ -40,7 +34,7 @@ export default {
       .then(res => {
         this.wordsArray = repeatArr(
           res.tableData.map(v => {
-            v.title = `<span style='display:inline-block;margin-right:20px;width:180px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
+            v.title = `<span style='display:inline-block;padding-left:10px;width:200px;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
               v.title
             }</span><span style='color:#999999'>${v.time.substring(5,16)}</span>`;
 
@@ -73,7 +67,6 @@ export default {
     top: -97px;
     width: 100%;
     border: 1px solid @border-color;
-    border-bottom: none;
     transition: all 1s;
     overflow: hidden;
     height: 210px;
