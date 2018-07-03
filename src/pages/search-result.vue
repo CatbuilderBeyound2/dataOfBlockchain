@@ -98,6 +98,8 @@ export default {
             type: this.active,
             columnName: this.sort.prop,
             orderType: this.sort.order,
+            pageNo: this.pageNo,
+            pageSize: this.pageSize,
           },
         })
         .then(res => {
@@ -160,6 +162,12 @@ export default {
       this.getCount(key);
     },
   },
+  watch: {
+    pageNo() {
+      this.seachByTab();
+      this.getCount();
+    },
+  },
 };
 </script>
 
@@ -169,14 +177,14 @@ export default {
 @import '~@style/mixins.less';
 @import '~@style/var.less';
 .search-result {
-  > .el-tabs > .el-tabs__header .el-tabs__nav {
+  >.el-tabs>.el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
-    > div {
+    >div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
   .el-tabs__item {
