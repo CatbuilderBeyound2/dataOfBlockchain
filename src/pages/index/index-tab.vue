@@ -1,13 +1,13 @@
 <template>
   <div class="tabs">
     <el-tabs :value="active" @tab-click="tabClick" type="border-card">
-      <el-tab-pane label="行情数据" name="quotation">
+      <el-tab-pane label="数字货币" name="quotation">
         <table1 v-if="'quotation'===active" :headerData='quotation.tableHeader' @sort-change='sortChange' :tableData='quotation.tableData'></table1>
       </el-tab-pane>
       <el-tab-pane label="交易平台" name="transaction">
         <el-tabs type="card" :value="subTab" @tab-click="subTabClick">
           <el-tab-pane v-for="(item,index) in subTabs" :label="item.label" :name="item.name" :key="index">
-            <table2 v-if="'transaction'===active" :headerData='transaction.tableHeader' :tableData='transaction.tableData' @sort-change='sortChange'></table2>
+            <table2  v-if="'transaction'===active":headerData='transaction.tableHeader' :tableData='transaction.tableData' @sort-change='sortChange'></table2>
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
@@ -45,6 +45,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       quotation: {
         tableHeader: [],
         tableData: [],
@@ -109,6 +110,7 @@ export default {
       };
       return deleteInvalidKey(res);
     },
+    // 排行榜的orderType要发desc，所以下面又写了一个collectingParams2
     collectingParams2() {
       let tradeType = this.subTabs.findIndex(v => {
         return v.name === this.subTab;
