@@ -102,7 +102,7 @@ export default {
         })
         .then(res => {
           this.tableHeader2 = res.tableHeader.map(v => {
-            let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
+            let sortableArr = ['turnover', 'ec_pair', 'ec_start'];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {

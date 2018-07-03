@@ -172,7 +172,7 @@ export default {
             base: (this.pageNo - 1) * this.pageSize,
           });
           this.transaction.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['ec_turnover', 'ec_pair', 'ec_start'];
+            let sortableArr = ['turnover', 'ec_pair', 'ec_start'];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {
