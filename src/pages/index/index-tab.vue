@@ -60,7 +60,7 @@ export default {
       active: this.$props['activeName'],
       sort: {
         prop: 'rank',
-        order: 'desc',
+        order: 'asc',
       },
       pageSize: 15,
       pageNo: 1,
@@ -103,6 +103,19 @@ export default {
       let res = {
         columnName: this.sort.prop,
         orderType: this.sort.order,
+        pageNo: this.pageNo,
+        pageSize: this.pageSize,
+        tradeType: tradeType === -1 ? 0 : tradeType,
+      };
+      return deleteInvalidKey(res);
+    },
+    collectingParams2() {
+      let tradeType = this.subTabs.findIndex(v => {
+        return v.name === this.subTab;
+      });
+      let res = {
+        columnName: this.sort.prop,
+        orderType:'desc',
         pageNo: this.pageNo,
         pageSize: this.pageSize,
         tradeType: tradeType === -1 ? 0 : tradeType,
@@ -174,7 +187,7 @@ export default {
     rankings() {
       api
         .rankings({
-          params: this.collectingParams(),
+          params: this.collectingParams2(),
         })
         .then(res => {
           addRowNo({
@@ -183,7 +196,7 @@ export default {
             base: (this.pageNo - 1) * this.pageSize,
           });
           this.rank.tableHeader = res.tableHeader.map(v => {
-            let sortableArr = ['marketCap', 'price', 'circulatingSupply', 'volume', 'change'];
+            let sortableArr = [];
             if (sortableArr.indexOf(v.column) > -1) {
               v.sortable = true;
             } else {
@@ -216,18 +229,18 @@ export default {
   max-width: 1000px;
   margin: 0 20px;
   margin-bottom: 20px;
-  > .el-tabs > .el-tabs__header .el-tabs__nav {
+  >.el-tabs>.el-tabs__header .el-tabs__nav {
     display: flex;
     width: 100%;
-    > div {
+    >div {
       flex-grow: 1;
     }
   }
-  .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
+  .el-tabs--border-card>.el-tabs__header .el-tabs__item:not(.is-disabled):hover {
     color: @primary-color;
   }
 
-  .el-tabs--border-card > .el-tabs__content {
+  .el-tabs--border-card>.el-tabs__content {
     padding: 0px;
   }
   .el-pagination {
@@ -246,13 +259,13 @@ export default {
   #pane-rank {
     padding: 15px;
   }
-  .el-tabs--card > .el-tabs__header {
+  .el-tabs--card>.el-tabs__header {
     border-bottom: none;
   }
-  .el-tabs--card > .el-tabs__header .el-tabs__nav {
+  .el-tabs--card>.el-tabs__header .el-tabs__nav {
     border: none;
   }
-  .el-tabs--card > .el-tabs__header .el-tabs__item {
+  .el-tabs--card>.el-tabs__header .el-tabs__item {
     height: 20px;
     line-height: 19px;
     margin-right: 10px;
@@ -261,7 +274,7 @@ export default {
     color: #676767;
     font-size: 14px;
   }
-  .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
+  .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
     border: 1px solid #69c72b;
     border-radius: 4px;
     background: #ecffe1;

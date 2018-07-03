@@ -6,11 +6,20 @@
 <template>
   <div class="table-1">
     <el-table :data="tableData" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
-      <el-table-column v-for="(item ,index) in headerData" :min-width="item.column==='coin_name'?150:0" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
+      <el-table-column v-for="(item ,index) in headerData" :min-width="item.column==='coin_name'?100:125" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
           <template v-else-if="item.column==='change'">
-            <div :class="parseFloat(scope.row[item.column])<0?'red':'green'">{{scope.row[item.column]}}</div>
+            <div :class="parseFloat(scope.row[item.column])<0?'red':'green'">{{(scope.row[item.column])+'%'}}</div>
+          </template>
+           <template v-else-if="item.column==='market_cap'" width="130">
+             {{(scope.row[item.column])===0?'-':'¥'+(scope.row[item.column])}}
+          </template>
+          <template v-else-if="item.column==='price'" >
+             {{(scope.row[item.column])===0?'-':'¥'+(scope.row[item.column])}}
+          </template>
+           <template v-else-if="item.column==='turnover'" >
+             {{(scope.row[item.column])===0?'-':'¥'+(scope.row[item.column])}}
           </template>
           <template v-else-if="item.column==='coin_name'">
             <img class="logo" :src="scope.row.img_url" alt="">
@@ -36,7 +45,7 @@ export default {
   components: {
     model,
   },
-  created() {},
+  created() { },
   methods: {
     rowClick(params) {
       this.getDetail(params);

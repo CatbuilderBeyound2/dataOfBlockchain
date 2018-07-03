@@ -20,9 +20,14 @@
             </el-rate>
           </template>
         </el-table-column>
-        <el-table-column v-if="item.column!=='ec_start'&&item.column!=='trade_type'&&item.column!=='ec_name'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+        <el-table-column v-if="item.column!=='ec_start'&&item.column!=='trade_type'&&item.column!=='ec_pair'&&item.column!=='ec_name'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
           <template slot-scope="scope">
             {{scope.row[item.column]}}
+          </template>
+        </el-table-column>
+        <el-table-column v-if="item.column==='ec_pair'" :sortable="item.sortable?'custom':false" header-align="center" :label="item.columnName" :key="index" :sort-orders='sortOrders' :prop='item.column'>
+          <template slot-scope="scope">
+            {{(scope.row[item.column])==='?'?'-':(scope.row[item.column])}}
           </template>
         </el-table-column>
       </template>

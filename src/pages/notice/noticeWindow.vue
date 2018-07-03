@@ -40,14 +40,15 @@ export default {
       .then(res => {
         this.wordsArray = repeatArr(
           res.tableData.map(v => {
-            v.title = `<span style='display:inline-block;margin-right:20px;width:140px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
+            v.title = `<span style='display:inline-block;margin-right:20px;width:180px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;vertical-align: bottom;'>${
               v.title
-            }</span><span style='color:#999999'>${v.time}</span>`;
+            }</span><span style='color:#999999'>${v.time.substring(5,16)}</span>`;
 
             return v;
           }),
           20
         );
+        console.log(res.tableData)
       });
   },
   methods: {

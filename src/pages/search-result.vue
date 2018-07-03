@@ -3,7 +3,7 @@
     <div class="title">搜索结果</div>
     <search @search='search'></search>
     <div class="result-count">
-      共{{resultTotalCount}}个结果，{{count.coinName}}个币种，{{count.trade}}个交易所
+      共{{resultTotalCount}}个结果，{{count.coinName}}个币种，{{count.trade}}个交易平台
     </div>
     <el-tabs :value="active" @tab-click="tabClick" type="border-card">
       <el-tab-pane label="币种" name="coinName">
