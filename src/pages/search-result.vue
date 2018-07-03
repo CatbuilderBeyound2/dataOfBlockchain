@@ -12,7 +12,7 @@
       <el-tab-pane label="交易平台" name="transaction">
         <table2 :headerData='tableHeader2' @sort-change='sortChange' :tableData='tableData2'></table2>
       </el-tab-pane>
-      <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' :total="total" small background layout="prev, pager, next">
+      <el-pagination v-if='active!=="none"' :current-page.sync='pageNo' :page-size='pageSize' :total="total" small background layout="prev, pager, next,total">
       </el-pagination>
     </el-tabs>
   </div>
