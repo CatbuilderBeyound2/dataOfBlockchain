@@ -195,7 +195,7 @@ export default {
     text-align: right;
     margin-top: 20px;
   }
-  .el-autocomplete {
+  .el-input {
     width: 100%;
     .el-input__suffix {
       background-color: @primary-color;

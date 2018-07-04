@@ -1,6 +1,6 @@
 <template>
   <div class="searchSelect">
-    <el-autocomplete placeholder="搜索您要查看的币种/平台关键字..." v-model="searchKey" @select="handleSelect" :fetch-suggestions="querySearch" value-key="name" suffix-icon="el-icon-search"></el-autocomplete>
+    <el-input placeholder="搜索您要查看的币种/平台关键字..." v-model="searchKey" suffix-icon="el-icon-search"></el-input>
     <div class="button" @click="search"></div>
     <img class="select__icon-cur" :src="icon">
   </div>
@@ -34,7 +34,11 @@ export default {
     bus.$on('clear-search', () => {
       this.searchKey = '';
     });
+    if (this.$route.query.q) {
+      this.searchKey = this.$route.query.q;
+    }
   },
+  mounted() {},
   methods: {
     search() {
       this.$emit('search', this.searchKey);
@@ -53,17 +57,6 @@ export default {
     handleSelect(item) {
       this.id = item.id;
       this.$emit('change', this.id);
-    },
-  },
-  beforeMount() {
-    this.id = this.channels[0] && this.channels[0].id;
-    this.searchKey = this.channels[0] && this.channels[0].name;
-  },
-  watch: {
-    id: function(cur) {
-      try {
-        this.icon = this.channels.find(item => item.id === cur).icon;
-      } catch (err) {}
     },
   },
 };

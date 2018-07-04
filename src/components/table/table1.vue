@@ -5,7 +5,7 @@
 
 <template>
   <div class="table-1">
-    <el-table :data="tableData" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
+    <el-table :data="tableData"  v-loading="loading" stripe header-row-class-name="table-1-header" @row-click="rowClick" @sort-change="sortChange">
       <el-table-column v-for="(item ,index) in headerData" :min-width="item.column==='index'?40:0" :sortable="item.sortable?'custom':false" header-align="center" align="center" :prop="item.column" :label="item.columnName" :key="index" :sort-orders='sortOrders'>
         <template slot-scope="scope">
           <chart v-if="item.column==='trend'" :options="scope.row.echarts"></chart>
