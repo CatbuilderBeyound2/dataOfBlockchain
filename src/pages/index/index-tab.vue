@@ -1,22 +1,13 @@
 <template>
   <div class="tabs">
     <el-tabs :value="active" @tab-click="tabClick" type="border-card">
-<<<<<<< HEAD
       <el-tab-pane label="数字货币" name="quotation">
-        <table1 v-if="'quotation'===active" :headerData='quotation.tableHeader' @sort-change='sortChange' :tableData='quotation.tableData'></table1>
-=======
-      <el-tab-pane label="行情数据" name="quotation">
         <table1 :loading='loading' v-if="'quotation'===active" :headerData='quotation.tableHeader' @sort-change='sortChange' :tableData='quotation.tableData'></table1>
->>>>>>> 7cb104246965c2215b3d5e16875d7a348da0f10e
       </el-tab-pane>
       <el-tab-pane label="交易平台" name="transaction">
         <el-tabs type="card" :value="subTab" @tab-click="subTabClick">
           <el-tab-pane v-for="(item,index) in subTabs" :label="item.label" :name="item.name" :key="index">
-<<<<<<< HEAD
-            <table2  v-if="'transaction'===active":headerData='transaction.tableHeader' :tableData='transaction.tableData' @sort-change='sortChange'></table2>
-=======
             <table2 :loading='loading' v-if="'transaction'===active" :headerData='transaction.tableHeader' :tableData='transaction.tableData' @sort-change='sortChange'></table2>
->>>>>>> 7cb104246965c2215b3d5e16875d7a348da0f10e
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
